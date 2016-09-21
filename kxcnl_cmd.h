@@ -1,0 +1,34 @@
+/* Instructions set: Next/Reset conditions */
+#define KXCNL_NOP			0x0
+#define KXCNL_TI1			0x1
+#define KXCNL_TI2			0x2
+#define KXCNL_TI3			0x3
+#define KXCNL_TI4			0x4
+#define KXCNL_GNTH1			0x5
+#define KXCNL_GNTH2			0x6
+#define KXCNL_LNTH1			0x7
+#define KXCNL_LNTH2			0x8
+#define KXCNL_GTTH1			0x9
+#define KXCNL_LLTH2			0xA
+#define KXCNL_GRTH1			0xB
+#define KXCNL_LRTH1			0xC
+#define KXCNL_GRTH2			0xD
+#define KXCNL_LRTH2			0xE
+#define KXCNL_NZERO			0xF
+/* Instruction set: Commands */
+#define KXCNL_STOP			0x00
+#define KXCNL_CONT			0x11
+#define KXCNL_JMP			0x22
+#define KXCNL_SRP			0x33
+#define KXCNL_CRP			0x44
+#define KXCNL_SETP			0x55
+#define KXCNL_SETS1			0x66
+#define KXCNL_STHR1			0x77
+#define KXCNL_OUTC			0x88
+#define KXCNL_OUTW			0x99
+#define KXCNL_STHR2			0xAA
+#define KXCNL_DEC			0xBB
+#define KXCNL_SISW			0xCC
+#define KXCNL_REL			0xDD
+#define KXCNL_STHR3			0xEE
+#define KXCNL_SSYNC			0xFF
