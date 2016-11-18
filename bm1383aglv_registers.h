@@ -1,5 +1,6 @@
 /*
 The MIT License (MIT)
+Copyright (c) 2016 Rohm Semiconductor
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -21,6 +22,8 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef __BM1383AGLV_REGISTERS_H__
+#define __BM1383AGLV_REGISTERS_H__
 /* registers */
 // [hPa]
 #define BM1383_PRESSURE_MIN 0x12C
@@ -113,4 +116,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define BM1383_PRESSURE_OUT_MSB_ALLBITS_MASK 0xFF
 #define BM1383_PRESSURE_OUT_LSB_ALLBITS_MASK 0xFF
 #define BM1383_PRESSURE_OUT_DECIMAL_ALLBITS_MASK 0x3F
+#endif
 

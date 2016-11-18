@@ -1,5 +1,6 @@
 /*
 The MIT License (MIT)
+Copyright (c) 2016 Rohm Semiconductor
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -21,6 +22,8 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef __RPR0521_REGISTERS_H__
+#define __RPR0521_REGISTERS_H__
 /* registers */
 #define RPR0521_REGISTER_DUMP_START 0x40
 #define RPR0521_SYSTEM_CONTROL 0x40
@@ -168,4 +171,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define RPR0521_INTERRUPT_INT_LATCH_MASK 0x04
 #define RPR0521_INTERRUPT_INT_TRIG_MASK 0x03
 #define RPR0521_MANUFACT_ID_MASK 0xFF
+#endif
 

@@ -1,5 +1,6 @@
 /*
 The MIT License (MIT)
+Copyright (c) 2016 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -21,6 +22,8 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef __KXCJB_REGISTERS_H__
+#define __KXCJB_REGISTERS_H__
 /* registers */
 // output register x
 #define KXCJB_OUTX_L 0x06
@@ -178,4 +181,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXCJB_DATA_CTRL_REG_OSA_MASK 0x0F
 // When 0xCA is written to this register, the MEMS self-test function is enabled
 #define KXCJB_SELF_TEST_TEST_MASK 0xFF
+#endif
 

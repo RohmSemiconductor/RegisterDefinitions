@@ -1,5 +1,6 @@
 /*
 The MIT License (MIT)
+Copyright (c) 2016 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -21,6 +22,8 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef __KMX61_REGISTERS_H__
+#define __KMX61_REGISTERS_H__
 /* registers */
 #define KMX61_WHO_AM_I 0x00
 #define KMX61_INS1 0x01
@@ -214,4 +217,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #define KMX61_ODCNTL_OSA_MASK 0x0F
 #define KMX61_BUF_CTRL1_BUF_M_MASK 0x03
+#endif
 

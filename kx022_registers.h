@@ -1,5 +1,6 @@
 /*
 The MIT License (MIT)
+Copyright (c) 2016 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -21,6 +22,8 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef __KX022_REGISTERS_H__
+#define __KX022_REGISTERS_H__
 /* registers */
 // x- hp filter output
 #define KX022_XHP_L 0x00
@@ -448,4 +451,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX012_WHO_AM_I_WIA_MASK 0xFF
 
 #define KX023_WHO_AM_I_WIA_MASK 0xFF
+#endif
 

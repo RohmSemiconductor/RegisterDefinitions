@@ -1,5 +1,6 @@
 /*
 The MIT License (MIT)
+Copyright (c) 2016 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -21,6 +22,8 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef __KXG08_REGISTERS_H__
+#define __KXG08_REGISTERS_H__
 /* registers */
 #define KXG08_TEMP_OUT_L 0x00
 #define KXG08_TEMP_OUT_H 0x01
@@ -1012,4 +1015,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG07_WHO_AM_I_WIA_MASK 0xFF
 
 #define KXG07_2080_WHO_AM_I_WIA_MASK 0xFF
+#endif
 

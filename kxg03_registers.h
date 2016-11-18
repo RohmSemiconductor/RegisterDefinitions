@@ -1,5 +1,6 @@
 /*
 The MIT License (MIT)
+Copyright (c) 2016 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -21,6 +22,8 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef __KXG03_REGISTERS_H__
+#define __KXG03_REGISTERS_H__
 /* registers */
 #define KXG03_TEMP_OUT_L 0x00
 #define KXG03_TEMP_OUT_H 0x01
@@ -616,7 +619,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // SYNC pin outputs aux2 ODR clock
 #define KXG03_FSYNC_CTL_FSYNC_SEL_AUX2_ODR (0x03 << 0)
 // SYNC pin disabled.
-#define KXG03_FSYNC_CTL_FSYNC_SEL_DISABLED (0x04 << 0)
+#define KXG03_FSYNC_CTL_FSYNC_SEL_DISABLED_1 (0x04 << 0)
 // SYNC pin disabled.
 #define KXG03_FSYNC_CTL_FSYNC_SEL_DISABLED_2 (0x05 << 0)
 // SYNC pin disabled.
@@ -672,15 +675,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // 1 read back
 #define KXG03_AUX_I2C_ODR1_W_AUX1_D_1_READ_BACK (0x01 << 4)
 // 2 read back
-#define KXG03_AUX_I2C_ODR1_W_AUX1_D_1_READ_BACK (0x02 << 4)
+#define KXG03_AUX_I2C_ODR1_W_AUX1_D_2_READ_BACK (0x02 << 4)
 // 3 read back
-#define KXG03_AUX_I2C_ODR1_W_AUX1_D_1_READ_BACK (0x03 << 4)
+#define KXG03_AUX_I2C_ODR1_W_AUX1_D_3_READ_BACK (0x03 << 4)
 // 4 read back
-#define KXG03_AUX_I2C_ODR1_W_AUX1_D_1_READ_BACK (0x04 << 4)
+#define KXG03_AUX_I2C_ODR1_W_AUX1_D_4_READ_BACK (0x04 << 4)
 // 5 read back
-#define KXG03_AUX_I2C_ODR1_W_AUX1_D_1_READ_BACK (0x05 << 4)
+#define KXG03_AUX_I2C_ODR1_W_AUX1_D_5_READ_BACK (0x05 << 4)
 // 6 read back
-#define KXG03_AUX_I2C_ODR1_W_AUX1_D_1_READ_BACK (0x06 << 4)
+#define KXG03_AUX_I2C_ODR1_W_AUX1_D_6_READ_BACK (0x06 << 4)
 // DNE
 #define KXG03_AUX_I2C_ODR1_W_AUX1_D_DNE (0x07 << 4)
 // odr 0.781Hz
@@ -752,15 +755,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // 1 read back
 #define KXG03_AUX_I2C_ODR2_W_AUX2_D_1_READ_BACK (0x01 << 4)
 // 2 read back
-#define KXG03_AUX_I2C_ODR2_W_AUX2_D_1_READ_BACK (0x02 << 4)
+#define KXG03_AUX_I2C_ODR2_W_AUX2_D_2_READ_BACK (0x02 << 4)
 // 3 read back
-#define KXG03_AUX_I2C_ODR2_W_AUX2_D_1_READ_BACK (0x03 << 4)
+#define KXG03_AUX_I2C_ODR2_W_AUX2_D_3_READ_BACK (0x03 << 4)
 // 4 read back
-#define KXG03_AUX_I2C_ODR2_W_AUX2_D_1_READ_BACK (0x04 << 4)
+#define KXG03_AUX_I2C_ODR2_W_AUX2_D_4_READ_BACK (0x04 << 4)
 // 5 read back
-#define KXG03_AUX_I2C_ODR2_W_AUX2_D_1_READ_BACK (0x05 << 4)
+#define KXG03_AUX_I2C_ODR2_W_AUX2_D_5_READ_BACK (0x05 << 4)
 // 6 read back
-#define KXG03_AUX_I2C_ODR2_W_AUX2_D_1_READ_BACK (0x06 << 4)
+#define KXG03_AUX_I2C_ODR2_W_AUX2_D_6_READ_BACK (0x06 << 4)
 // DNE
 #define KXG03_AUX_I2C_ODR2_W_AUX2_D_DNE (0x07 << 4)
 // odr 0.781Hz
@@ -954,4 +957,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG03_AUX_I2C_ODR1_S_AUX2ODRS_MASK 0x0F
 #define KXG03_BUF_EN_BUF_SYM_MASK 0x0C
 #define KXG03_BUF_EN_BUF_M_MASK 0x03
+#endif
 

@@ -1,5 +1,6 @@
 /*
 The MIT License (MIT)
+Copyright (c) 2016 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -21,6 +22,8 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef __KMX62_REGISTERS_H__
+#define __KMX62_REGISTERS_H__
 /* registers */
 // This register can be used for supplier recognition, as it can be factory written to a known byte value.
 #define KMX62_WHO_AM_I 0x00
@@ -186,7 +189,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // trigger input for FIFO
 #define KMX62_INC3_IEL2_FIFO_TRIG (0x02 << 4)
 // trigger input for FIFO
-#define KMX62_INC3_IEL2_FIFO_TRIG (0x03 << 4)
+#define KMX62_INC3_IEL2_FIFO_TRIG_2 (0x03 << 4)
 // push-pull
 #define KMX62_INC3_IED1_PUSHPULL (0x00 << 3)
 // open-drain
@@ -202,7 +205,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // trigger input for FIFO
 #define KMX62_INC3_IEL1_FIFO_TRIG (0x02 << 0)
 // trigger input for FIFO
-#define KMX62_INC3_IEL1_FIFO_TRIG (0x03 << 0)
+#define KMX62_INC3_IEL1_FIFO_TRIG_2 (0x03 << 0)
 // x negative (x-) enable/disable
 #define KMX62_INC4_AXNIE (0x01 << 5)
 // x positive (x+) enable/disable
@@ -472,4 +475,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KMX62_BUF_STATUS_1_SMP_LEV_MASK 0xFF
 #define KMX62_BUF_STATUS_2_SMP_PAST_MASK 0xFF
 #define KMX62_BUF_STATUS_3_SMP_PAST_H_MASK 0xFF
+#endif
 

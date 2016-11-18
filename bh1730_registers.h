@@ -1,5 +1,6 @@
 /*
 The MIT License (MIT)
+Copyright (c) 2016 Rohm Semiconductor
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -21,6 +22,8 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef __BH1730_REGISTERS_H__
+#define __BH1730_REGISTERS_H__
 /* registers */
 #define BH1730_CONTROL 0x80
 #define BH1730_TIMING 0x81
@@ -70,4 +73,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define BH1730_INTERRUPT_PERSIST_MASK 0x0F
 #define BH1730_GAIN_GAIN_MASK 0x07
 #define BH1730_OPART_ID_WIA_MASK 0xFF
+#endif
 

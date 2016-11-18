@@ -1,5 +1,6 @@
 /*
 The MIT License (MIT)
+Copyright (c) 2016 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -21,6 +22,8 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef __KXCNL_REGISTERS_H__
+#define __KXCNL_REGISTERS_H__
 /* registers */
 // This register can be used for optional supplier information.
 #define KXCNL_INFO1 0x0D
@@ -284,4 +287,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXCNL_SETT2_ABS_MASK 0x20
 #define KXCNL_PPRP2_RESET_POINT_MASK 0xF0
 #define KXCNL_PPRP2_PROGRAM_COUNTER_MASK 0x0F
+#endif
 
