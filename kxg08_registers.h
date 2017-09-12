@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2016 Kionix Inc.
+Copyright (c) 2017 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -39,61 +39,57 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG08_ACCEL_YOUT_H 0x0B
 #define KXG08_ACCEL_ZOUT_L 0x0C
 #define KXG08_ACCEL_ZOUT_H 0x0D
-// Auxiliary Sensor #1 output data bytes AUX1_OUT1 through AUX1_OUT6
-#define KXG08_AUX1_OUT1 0x0E
-#define KXG08_AUX1_OUT2 0x0F
-#define KXG08_AUX1_OUT3 0x10
-#define KXG08_AUX1_OUT4 0x11
-#define KXG08_AUX1_OUT5 0x12
-#define KXG08_AUX1_OUT6 0x13
-// Auxiliary Sensor #2 output data bytes AUX2_OUT1 through AUX2_OUT6
-#define KXG08_AUX2_OUT1 0x14
-#define KXG08_AUX2_OUT2 0x15
-#define KXG08_AUX2_OUT3 0x16
-#define KXG08_AUX2_OUT4 0x17
-#define KXG08_AUX2_OUT5 0x18
-#define KXG08_AUX2_OUT6 0x19
-#define KXG08_TIMESTAMP1 0x1A
-#define KXG08_TIMESTAMP2 0x1B
-#define KXG08_TIMESTAMP3 0x1C
+#define KXG08_AUX1_OUT_1 0x0E
+#define KXG08_AUX1_OUT_2 0x0F
+#define KXG08_AUX1_OUT_3 0x10
+#define KXG08_AUX1_OUT_4 0x11
+#define KXG08_AUX1_OUT_5 0x12
+#define KXG08_AUX1_OUT_6 0x13
+#define KXG08_AUX2_OUT_1 0x14
+#define KXG08_AUX2_OUT_2 0x15
+#define KXG08_AUX2_OUT_3 0x16
+#define KXG08_AUX2_OUT_4 0x17
+#define KXG08_AUX2_OUT_5 0x18
+#define KXG08_AUX2_OUT_6 0x19
+#define KXG08_TIMESTAMP7_0 0x1A
+#define KXG08_TIMESTAMP15_8 0x1B
+#define KXG08_TIMESTAMP18_16 0x1C
 #define KXG08_BUF_PAST 0x1D
 #define KXG08_BUF_SMPLEV_L 0x1E
 #define KXG08_BUF_SMPLEV_H 0x1F
-// current sixfacet posititions
+// Current Tilt Position Register.
 #define KXG08_TSCP 0x20
-// previous six facet positions
+// Previous Tilt Positon Register.
 #define KXG08_TSPP 0x21
+// Reports the status of Auxiliary Sensors AUX1 and AUX2.
 #define KXG08_AUX_STATUS 0x22
 // WHO_AM_I
 #define KXG08_WHO_AM_I 0x23
-// Individual Identification (serial number).
-#define KXG08_SN1 0x24
-#define KXG08_SN2 0x25
-#define KXG08_SN3 0x26
-#define KXG08_SN4 0x27
+#define KXG08_SN7_0 0x24
+#define KXG08_SN15_8 0x25
+#define KXG08_SN23_16 0x26
+#define KXG08_SN31_24 0x27
 // Status register 1
 #define KXG08_STATUS1 0x30
 // Interrupt 1 source register 1
 #define KXG08_INT1_SRC1 0x31
-// Interrupt 1 source register 2
+// Interrupt 1 source register 2 (WUF direction)
 #define KXG08_INT1_SRC2 0x32
-// Interrupt 1 source register 3
+// Interrupt 1 source register 3 (Double Tap direction)
 #define KXG08_INT1_SRC3 0x33
 // Interrupt 1 source register 4
 #define KXG08_INT1_SRC4 0x34
-// Reading this register releases int1 source registers
 #define KXG08_INT1_L 0x35
 // Status register 2
 #define KXG08_STATUS2 0x36
 // Interrupt 2 source register 1
 #define KXG08_INT2_SRC1 0x37
-// Interrupt 2 source register 2
+// Interrupt 2 source register 2 (WUF direction)
 #define KXG08_INT2_SRC2 0x38
-// Interrupt 2 source register 3
+// Interrupt 2 source register 3 (Double Tap direction)
 #define KXG08_INT2_SRC3 0x39
 // Interrupt 2 source register 4
 #define KXG08_INT2_SRC4 0x3A
-// Reading this register releases int2 source registers
 #define KXG08_INT2_L 0x3B
 // Accelerometer Control register
 #define KXG08_ACCEL_ODR 0x3C
@@ -101,6 +97,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG08_ACCEL_CTL 0x3D
 // Gyroscope Control register
 #define KXG08_GYRO_ODR 0x3E
+// Gyro range control register.
 #define KXG08_GYRO_CTL 0x3F
 // This register controls the settings for the physical interrupt pins INT1 and INT2
 #define KXG08_INT_PIN_CTL 0x40
@@ -120,71 +117,45 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG08_INT_MASK4 0x47
 // External Synchronous control register.
 #define KXG08_FSYNC_CTL 0x48
-// This register sets the threshold for Back-to-sleep (motion detect) interrupt.
 #define KXG08_BTS_TH 0x49
-// This register contains additional bits for BTS and WUF threshold.
 #define KXG08_BTSWUF_TH 0x4A
-// This register sets the Active Threshold for wake-up (motion detect) interrupt.
 #define KXG08_WUF_TH 0x4B
-// This register sets the time motion must be present before a wake-up interrupt is set.
 #define KXG08_WUF_COUNTER 0x4C
-// This register sets the time motion must be present before a Back-to-sleep interrupt is set.
 #define KXG08_BTS_COUNTER 0x4D
 // Wake and Sleep control register 1.
 #define KXG08_WAKE_SLEEP_CTL1 0x4E
 // WUF and BTS threshold mode.
 #define KXG08_WAKE_SLEEP_CTL2 0x4F
 // Read/Write control register
-#define KXG08_AUX_I2C_CTRL_REG 0x50
-// Read/Write that should be used to store the SAD for auxiliary I2C device 1.
+#define KXG08_AUX_I2C_CTL_REG 0x50
 #define KXG08_AUX_I2C_SAD1 0x51
-// Read/Write that should be used to store the starting data register address for auxiliary I2C device 1.
 #define KXG08_AUX_I2C_REG1 0x52
-// Register address for enable/disable control register for auxiliary I2C device 1.
 #define KXG08_AUX_I2C_CTL1 0x53
-// Defines bits to toggle in the control register for auxiliary I2C device 1.
 #define KXG08_AUX_I2C_BIT1 0x54
 // Defines register read controls for auxiliary I2C device.
 #define KXG08_AUX_I2C_ODR 0x55
-// Read/Write that should be used to store the SAD for auxiliary I2C device 2.
 #define KXG08_AUX_I2C_SAD2 0x56
-// Read/Write that should be used to store the starting data register address for auxiliary I2C device 2.
 #define KXG08_AUX_I2C_REG2 0x57
-// Register address for enable/disable control register for auxiliary I2C device 2.
 #define KXG08_AUX_I2C_CTL2 0x58
-// Defines bits to toggle in the control register for auxiliary I2C device 2.
 #define KXG08_AUX_I2C_BIT2 0x59
 // Defines register read controls for auxiliary I2C device.
 #define KXG08_AUX_I2C_ODR2 0x5A
-// This register sets the Hysteresis that is placed in between the Screen Rotation states.
 #define KXG08_HYST_SET 0x5B
-// This register sets the high level threshold for tilt angle detection.
 #define KXG08_TILT_ANGLE_HL 0x5C
-// This register sets the high level threshold for tilt angle detection.
 #define KXG08_TILT_ANGLE_LL 0x5D
-// This register sets the high level threshold for tilt angle detection.
 #define KXG08_TILT_TIMER 0x5E
 // This register sets the high level threshold for tilt angle detection.
 #define KXG08_TILT_TAP_ODR 0x5F
 // This register is responsible for enabling/disabling reporting of Tap/Double Tap
 #define KXG08_TDTRC 0x60
-// This register contains counter information for the detection of a double tap event.
 #define KXG08_TDTC 0x61
-// This register represents the 8-bit jerk high threshold to determine if a tap is detected.
 #define KXG08_TTH 0x62
-// This register represents the 8-bit (0d 255d) jerk low threshold to determine if a tap is detected.
 #define KXG08_TTL 0x63
-// This register contains counter information for the detection of any tap event.
 #define KXG08_FTD 0x64
-// This register contains counter information for the detection of a double tap event.
 #define KXG08_STD 0x65
-// This register contains counter information for the detection of a tap event.
 #define KXG08_TLT 0x66
-// This register contains counter information for the detection of single and double taps.
 #define KXG08_TWS 0x67
-// Free Fall Threshold
 #define KXG08_FFTH 0x68
-// Free Fall Counter
 #define KXG08_FFC 0x69
 // Free Fall Control
 #define KXG08_FFCTL 0x6A
@@ -203,16 +174,16 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // Read/write control register that controls sample buffer operation
 #define KXG08_BUF_EN 0x78
 #define KXG08_BUF_STATUS 0x79
-// Latched buffer status information and the entire sample buffer are cleared when any data is written to this register.
 #define KXG08_BUF_CLEAR 0x7A
-// Data in the buffer can be read by executing this command.
 #define KXG08_BUF_READ 0x7B
 // WHO_AM_I
 #define KXG08_2080_WHO_AM_I 0x23
 // WHO_AM_I
-#define KXG07_WHO_AM_I 0x23
+#define KXG07_1080_WHO_AM_I 0x23
 // WHO_AM_I
 #define KXG07_2080_WHO_AM_I 0x23
+// WHO_AM_I
+#define KXG07_3001_WHO_AM_I 0x23
 /* registers bits */
 // x-left
 #define KXG08_TSCP_LE (0x01 << 5)
@@ -624,41 +595,33 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // z positive (z+): 0 = disabled, 1 = enabled
 #define KXG08_INT_MASK4_TFUM (0x01 << 0)
 // INT2 = interrupt-2.
-#define KXG08_FSYNC_CTL_FSYNC_TRIG_INT2 (0x00 << 7)
+#define KXG08_FSYNC_CTL_FSYNC_TRIG_INT2 (0x00 << 6)
 // INT2 = fsync function
-#define KXG08_FSYNC_CTL_FSYNC_TRIG_FSYNC (0x01 << 7)
+#define KXG08_FSYNC_CTL_FSYNC_TRIG_FSYNC (0x01 << 6)
 // FSYNC is disabled. SYNC pin is tri-stated.
-#define KXG08_FSYNC_CTL_FSYNC_MODE_DISABLED_3STATE (0x00 << 4)
+#define KXG08_FSYNC_CTL_FSYNC_MODE_DISABLED (0x00 << 4)
 // FSYNC is enabled. Sync pin is configured as input pin. Buffer is updated in sync with external clock applied at SYNC pin.
-#define KXG08_FSYNC_CTL_FSYNC_MODE_ENABLED_SYNC_CLK (0x01 << 4)
+#define KXG08_FSYNC_CTL_FSYNC_MODE_INPUT_EXT (0x01 << 4)
 // FSYNC is enabled. Sync pin is configured as input pin. State of SYNC pin is stored in selected sensor's LSB bit.
-#define KXG08_FSYNC_CTL_FSYNC_MODE_ENABLED_W_SYNC (0x02 << 4)
+#define KXG08_FSYNC_CTL_FSYNC_MODE_INPUT (0x02 << 4)
 // FSYNC is disabled. SYNC pin is configured as output pin.
-#define KXG08_FSYNC_CTL_FSYNC_MODE_DISABLED_OUPUT (0x03 << 4)
-// SYNC function disabled
-#define KXG08_FSYNC_CTL_FSYNC_SEL_IN_DISABLED (0x00 << 0)
-// State of SYNC pin is stored in gyro x LSB bit
-#define KXG08_FSYNC_CTL_FSYNC_SEL_IN_GYRO_X_LSB (0x01 << 0)
-// State of SYNC pin is stored in gyro y LSB bit.
-#define KXG08_FSYNC_CTL_FSYNC_SEL_IN_GYRO_Y_LSB (0x02 << 0)
-// State of SYNC pin is stored in gyro.z LSB bt
-#define KXG08_FSYNC_CTL_FSYNC_SEL_IN_GYRO_Z_LSB (0x03 << 0)
-// State of SYNC pin is stored in accel x LSB bit.
-#define KXG08_FSYNC_CTL_FSYNC_SEL_IN_ACCEL_X_LSB (0x04 << 0)
-// State of SYNC pin is stored in accel y LSB bit.
-#define KXG08_FSYNC_CTL_FSYNC_SEL_IN_ACCEL_Y_LSB (0x05 << 0)
-// State of SYNC pin is stored in accel z LSB bit.
-#define KXG08_FSYNC_CTL_FSYNC_SEL_IN_ACCEL_Z_LSB (0x06 << 0)
-// State of SYNC pin is stored in temperature LSB bit
-#define KXG08_FSYNC_CTL_FSYNC_SEL_IN_TEMPERATURE_LSB (0x07 << 0)
-// SYNC pin outputs gyroscope ODR clock.
-#define KXG08_FSYNC_CTL_FSYNC_SEL_OUT_OUT_GYRO_ODR (0x00 << 0)
-// SYNC pin outputs accelerometers ODR clock.
-#define KXG08_FSYNC_CTL_FSYNC_SEL_OUT_OUT_ACC_ODR (0x01 << 0)
-// SYNC pin outputs aux1 ODR clock.
-#define KXG08_FSYNC_CTL_FSYNC_SEL_OUT_OUT_AUX1_ODR (0x02 << 0)
-// SYNC pin outputs aux2 ODR clock.
-#define KXG08_FSYNC_CTL_FSYNC_SEL_OUT_OUT_AUX2_ODR (0x03 << 0)
+#define KXG08_FSYNC_CTL_FSYNC_MODE_OUTPUT (0x03 << 4)
+// Definition according FSYNC_MODE selection
+#define KXG08_FSYNC_CTL_FSYNC_SEL_SEL000 (0x00 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG08_FSYNC_CTL_FSYNC_SEL_SEL001 (0x01 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG08_FSYNC_CTL_FSYNC_SEL_SEL010 (0x02 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG08_FSYNC_CTL_FSYNC_SEL_SEL011 (0x03 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG08_FSYNC_CTL_FSYNC_SEL_SEL100 (0x04 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG08_FSYNC_CTL_FSYNC_SEL_SEL101 (0x05 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG08_FSYNC_CTL_FSYNC_SEL_SEL110 (0x06 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG08_FSYNC_CTL_FSYNC_SEL_SEL111 (0x07 << 0)
 // Absolute threshold. ASIC compares current output to threshold.
 #define KXG08_WAKE_SLEEP_CTL1_TH_MODE_ABSOLUTE_THRESHOLD (0x00 << 5)
 // Relative threshold. ASIC compares difference between current output and previous output to threshold.
@@ -712,18 +675,24 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // 100Hz
 #define KXG08_WAKE_SLEEP_CTL2_OBTS_100 (0x0B << 0)
 // 100Hz
-#define KXG08_WAKE_SLEEP_CTL2_OBTS_100_1 (0x0C << 0)
+#define KXG08_WAKE_SLEEP_CTL2_OBTS_100_2 (0x0C << 0)
+// 100Hz
+#define KXG08_WAKE_SLEEP_CTL2_OBTS_100_3 (0x0D << 0)
+// 100Hz
+#define KXG08_WAKE_SLEEP_CTL2_OBTS_100_4 (0x0E << 0)
+// 100Hz
+#define KXG08_WAKE_SLEEP_CTL2_OBTS_100_5 (0x0F << 0)
 // Defines control bit polarity for aux2 enable/disable command sequences.
-#define KXG08_AUX_I2C_CTRL_REG_AUX_CTL_POL2 (0x01 << 5)
+#define KXG08_AUX_I2C_CTL_REG_AUX_CTL_POL2 (0x01 << 5)
 // Defines control bit polarity for aux1 enable/disable command sequences.
-#define KXG08_AUX_I2C_CTRL_REG_AUX_CTL_POL1 (0x01 << 4)
+#define KXG08_AUX_I2C_CTL_REG_AUX_CTL_POL1 (0x01 << 4)
 // 100kHz
-#define KXG08_AUX_I2C_CTRL_REG_AUX_BUS_SPD_100 (0x00 << 3)
+#define KXG08_AUX_I2C_CTL_REG_AUX_BUS_SPD_100 (0x00 << 3)
 // 400kHz
-#define KXG08_AUX_I2C_CTRL_REG_AUX_BUS_SPD_400 (0x01 << 3)
-#define KXG08_AUX_I2C_CTRL_REG_AUX_PULL_UP_DISABLED (0x00 << 2)
-#define KXG08_AUX_I2C_CTRL_REG_AUX_PULL_UP_ENABLED (0x01 << 2)
-#define KXG08_AUX_I2C_CTRL_REG_AUX_BYPASS (0x01 << 1)
+#define KXG08_AUX_I2C_CTL_REG_AUX_BUS_SPD_400 (0x01 << 3)
+#define KXG08_AUX_I2C_CTL_REG_AUX_PULL_UP_DISABLED (0x00 << 2)
+#define KXG08_AUX_I2C_CTL_REG_AUX_PULL_UP_ENABLED (0x01 << 2)
+#define KXG08_AUX_I2C_CTL_REG_AUX_BYPASS (0x01 << 1)
 #define KXG08_AUX_I2C_ODR_AUX1_D_0 (0x00 << 4)
 #define KXG08_AUX_I2C_ODR_AUX1_D_1 (0x01 << 4)
 #define KXG08_AUX_I2C_ODR_AUX1_D_2 (0x02 << 4)
@@ -762,6 +731,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG08_AUX_I2C_ODR_AUX1ODR_1600_2 (0x0D << 0)
 // 1600Hz
 #define KXG08_AUX_I2C_ODR_AUX1ODR_1600_3 (0x0E << 0)
+// 1600Hz
+#define KXG08_AUX_I2C_ODR_AUX1ODR_1600_4 (0x0F << 0)
 #define KXG08_AUX_I2C_ODR2_AUX2_D_0 (0x00 << 4)
 #define KXG08_AUX_I2C_ODR2_AUX2_D_1 (0x01 << 4)
 #define KXG08_AUX_I2C_ODR2_AUX2_D_2 (0x02 << 4)
@@ -800,6 +771,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG08_AUX_I2C_ODR2_AUX2ODR_1600_2 (0x0D << 0)
 // 1600Hz
 #define KXG08_AUX_I2C_ODR2_AUX2ODR_1600_3 (0x0E << 0)
+// 1600Hz
+#define KXG08_AUX_I2C_ODR2_AUX2ODR_1600_4 (0x0F << 0)
 // 12.5Hz
 #define KXG08_TILT_TAP_ODR_OTDT_12P5 (0x00 << 3)
 // 25Hz
@@ -868,6 +841,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG08_CTL_REG_1_TAP_EN (0x01 << 2)
 // Timestamp mode enable.
 #define KXG08_CTL_REG_1_CONT_TIME_EN (0x01 << 0)
+// Active high I2C disable bit
+#define KXG08_STDBY_I2C_DIS (0x01 << 7)
 // Temperature sensor is enabled.
 #define KXG08_STDBY_TEMP_STDBY_ENABLED (0x00 << 5)
 // Temperature sensor is disabled.
@@ -911,17 +886,20 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG08_BUF_EN_BUF_M_STREAM (0x01 << 0)
 // When a trigger event occurs (logic high input on TRIG pin), the buffer holds the last data set of SMP[11:0] samples
 #define KXG08_BUF_EN_BUF_M_TRIGGER (0x02 << 0)
+#define KXG08_BUF_EN_BUF_M_NOT_VALID (0x03 << 0)
 // reports the status of the buffers trigger function if this mode has been selected.
 #define KXG08_BUF_STATUS_BUF_TRIG (0x01 << 7)
 // WHO_AM_I -value -2080 version
 #define KXG08_2080_WHO_AM_I_WIA_ID (0x26 << 0)
 // WHO_AM_I -value -1080 version
-#define KXG07_WHO_AM_I_WIA_ID (0x29 << 0)
+#define KXG07_1080_WHO_AM_I_WIA_ID (0x29 << 0)
 // WHO_AM_I -value -2080 version
 #define KXG07_2080_WHO_AM_I_WIA_ID (0x25 << 0)
+// WHO_AM_I -value -3001 version
+#define KXG07_3001_WHO_AM_I_WIA_ID (0x2F << 0)
  /*registers bit masks */
-#define KXG08_BUF_SMPLEV_L_BUFSLEV3_0_MASK 0xF0
-#define KXG08_BUF_SMPLEV_H_BUFSLEV311_4_MASK 0xFF
+#define KXG08_BUF_SMPLEV_L_SMP_LEV3_0_MASK 0xF0
+#define KXG08_BUF_SMPLEV_H_SMP_LEV11_4_MASK 0xFF
 // Detailed aux1 communication status.
 #define KXG08_AUX_STATUS_AUX1ST_MASK 0x03
 // Detailed aux1 communication status.
@@ -947,7 +925,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #define KXG08_GYRO_ODR_NAVGG_MASK 0x70
 #define KXG08_GYRO_ODR_ODRG_MASK 0x0F
-// Gyro range control register.
+
 #define KXG08_GYRO_CTL_GYRO_BW_MASK 0x08
 
 #define KXG08_GYRO_CTL_GYRO_FS_MASK 0x07
@@ -958,13 +936,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG08_INT_PIN_CTL_IEA1_MASK 0x04
 #define KXG08_INT_PIN_CTL_IEL1_MASK 0x03
 // Defines INT2 and SYNC_TRIG pin functionality
-#define KXG08_FSYNC_CTL_FSYNC_TRIG_MASK 0x80
+#define KXG08_FSYNC_CTL_FSYNC_TRIG_MASK 0x40
 // FSYNC enable and mode select.
 #define KXG08_FSYNC_CTL_FSYNC_MODE_MASK 0x30
-// if(fsync_mode=2'b10)
-#define KXG08_FSYNC_CTL_FSYNC_SEL_IN_MASK 0x07
-// f(fsync_mode=2'b11)
-#define KXG08_FSYNC_CTL_FSYNC_SEL_OUT_MASK 0x07
+
+#define KXG08_FSYNC_CTL_FSYNC_SEL_MASK 0x07
 
 #define KXG08_WAKE_SLEEP_CTL1_TH_MODE_MASK 0x20
 // Defines de-bounce counter clear mode.
@@ -974,9 +950,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // sets the Output Data Rate for the Back to Sleep (BTS).
 #define KXG08_WAKE_SLEEP_CTL2_OBTS_MASK 0x0F
 // Sets I2C bus speed.
-#define KXG08_AUX_I2C_CTRL_REG_AUX_BUS_SPD_MASK 0x08
+#define KXG08_AUX_I2C_CTL_REG_AUX_BUS_SPD_MASK 0x08
 // Active pullup
-#define KXG08_AUX_I2C_CTRL_REG_AUX_PULL_UP_MASK 0x04
+#define KXG08_AUX_I2C_CTL_REG_AUX_PULL_UP_MASK 0x04
 #define KXG08_AUX_I2C_ODR_AUX1_D_MASK 0x70
 #define KXG08_AUX_I2C_ODR_AUX1ODR_MASK 0x0F
 // Number of bytes read back via Auxiliary I2C bus from device
@@ -997,7 +973,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG08_STDBY_AUX2_STDBY_MASK 0x10
 // Active low aux1 sensor enable.
 #define KXG08_STDBY_AUX1_STDBY_MASK 0x08
-// Active low gyroscope fast start sensor enable.
+// Active high gyroscope fast start sensor enable
 #define KXG08_STDBY_GYRO_FSTART_MASK 0x04
 // Active low gyroscope sensor enable.
 #define KXG08_STDBY_GYRO_STDBY_MASK 0x02
@@ -1012,8 +988,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #define KXG08_2080_WHO_AM_I_WIA_MASK 0xFF
 
-#define KXG07_WHO_AM_I_WIA_MASK 0xFF
+#define KXG07_1080_WHO_AM_I_WIA_MASK 0xFF
 
 #define KXG07_2080_WHO_AM_I_WIA_MASK 0xFF
+
+#define KXG07_3001_WHO_AM_I_WIA_MASK 0xFF
 #endif
 

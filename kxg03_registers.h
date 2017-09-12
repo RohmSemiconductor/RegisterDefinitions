@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2016 Kionix Inc.
+Copyright (c) 2017 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -39,14 +39,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG03_ACC_YOUT_H 0x0B
 #define KXG03_ACC_ZOUT_L 0x0C
 #define KXG03_ACC_ZOUT_H 0x0D
-// Auxiliary Sensor #1 output data bytes AUX1_OUT1 through AUX1_OUT6
 #define KXG03_AUX1_OUT1 0x0E
 #define KXG03_AUX1_OUT2 0x0F
 #define KXG03_AUX1_OUT3 0x10
 #define KXG03_AUX1_OUT4 0x11
 #define KXG03_AUX1_OUT5 0x12
 #define KXG03_AUX1_OUT6 0x13
-// Auxiliary Sensor #2 output data bytes AUX2_OUT1 through AUX2_OUT6
 #define KXG03_AUX2_OUT1 0x14
 #define KXG03_AUX2_OUT2 0x15
 #define KXG03_AUX2_OUT3 0x16
@@ -69,7 +67,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG03_AUX_STATUS 0x22
 // WHO_AM_I
 #define KXG03_WHO_AM_I 0x30
-// Individual Identification (serial number).
 #define KXG03_SN1_MIR 0x31
 #define KXG03_SN2_MIR 0x32
 #define KXG03_SN3_MIR 0x33
@@ -77,12 +74,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG03_STATUS1 0x36
 #define KXG03_INT1_SRC1 0x37
 #define KXG03_INT1_SRC2 0x38
-// Reading this register releases int1 source registers
 #define KXG03_INT1_L 0x39
 #define KXG03_STATUS2 0x3A
 #define KXG03_INT2_SRC1 0x3B
 #define KXG03_INT2_SRC2 0x3C
-// Reading this register releases int2 source registers
 #define KXG03_INT2_L 0x3D
 // Accelerometer Wake Mode Control register.
 #define KXG03_ACCEL_ODR_WAKE 0x3E
@@ -113,13 +108,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG03_BTS_TH 0x4F
 #define KXG03_BTS_COUNTER 0x50
 #define KXG03_AUX_I2C_CTL_REG 0x51
-// Read/Write that should be used to store the SAD for auxiliary I2C device 1
 #define KXG03_AUX_I2C_SAD1 0x52
-// Read/Write that should be used to store the starting data register address for auxiliary I2C device 1
 #define KXG03_AUX_I2C_REG1 0x53
-// Register address for enable/disable control register for auxiliary I2C device
 #define KXG03_AUX_I2C_CTL1 0x54
-// Defines bits to toggle in the control register for auxiliary I2C device 1
 #define KXG03_AUX_I2C_BIT1 0x55
 // Defines register read controls for auxiliary I2C device 1
 #define KXG03_AUX_I2C_ODR1_W 0x56
@@ -132,13 +123,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG03_AUX_I2C_ODR2_W 0x5C
 // Defines register read controls for auxiliary I2C device 1
 #define KXG03_AUX_I2C_ODR1_S 0x57
-// Buffer watermark threshold level L
 #define KXG03_BUF_WMITH_L 0x75
-// Buffer watermark threshold level H
 #define KXG03_BUF_WMITH_H 0x76
-// Buffer Trigger mode threshold L
 #define KXG03_BUF_TRIGTH_L 0x77
-// Buffer Trigger mode threshold H
 #define KXG03_BUF_TRIGTH_H 0x78
 // Read/write control register that controls sample buffer input in wake mode.
 #define KXG03_BUF_CTL2 0x79
@@ -150,9 +137,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG03_BUF_EN 0x7C
 // This register reports the status of the sample buffer trigger function.
 #define KXG03_BUF_STATUS 0x7D
-// Latched buffer status information and the entire sample buffer are cleared when any data is written to this register.
 #define KXG03_BUF_CLEAR 0x7E
-// Data from the buffer should be read using a single SAD+R command
 #define KXG03_BUF_READ 0x7F
 /* registers bits */
 // Aux2 command sequence failure flag
@@ -594,38 +579,22 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG03_FSYNC_CTL_FSYNC_MODE_INPUT (0x02 << 4)
 // FSYNC is disabled. SYNC pin is configured as output pin.
 #define KXG03_FSYNC_CTL_FSYNC_MODE_OUTPUT (0x03 << 4)
-// SYNC function disabled
-#define KXG03_FSYNC_CTL_FSYNC_SEL_DISABLED (0x00 << 0)
-// State of SYNC pin is stored in gyro x LSB bit
-#define KXG03_FSYNC_CTL_FSYNC_SEL_GYRO_X_LSB (0x01 << 0)
-// State of SYNC pin is stored in gyro y LSB bit.
-#define KXG03_FSYNC_CTL_FSYNC_SEL_GYRO_Y_LSB (0x02 << 0)
-// State of SYNC pin is stored in gyro.z LSB bt
-#define KXG03_FSYNC_CTL_FSYNC_SEL_GYRO_Z_LSB (0x03 << 0)
-// State of SYNC pin is stored in accel x LSB bit.
-#define KXG03_FSYNC_CTL_FSYNC_SEL_ACCEL_X_LSB (0x04 << 0)
-// State of SYNC pin is stored in accel y LSB bit.
-#define KXG03_FSYNC_CTL_FSYNC_SEL_ACCEL_Y_LSB (0x05 << 0)
-// State of SYNC pin is stored in accel z LSB bit.
-#define KXG03_FSYNC_CTL_FSYNC_SEL_ACCEL_Z_LSB (0x06 << 0)
-// State of SYNC pin is stored in temperature LSB bit
-#define KXG03_FSYNC_CTL_FSYNC_SEL_TEMPERATURE_LSB (0x07 << 0)
-// SYNC pin outputs gyroscope ODR clock.
-#define KXG03_FSYNC_CTL_FSYNC_SEL_GYRO_ODR (0x00 << 0)
-// SYNC pin outputs accelerometers ODR clock.
-#define KXG03_FSYNC_CTL_FSYNC_SEL_ACC_ODR (0x01 << 0)
-// SYNC pin outputs aux1 ODR clock
-#define KXG03_FSYNC_CTL_FSYNC_SEL_AUX1_ODR (0x02 << 0)
-// SYNC pin outputs aux2 ODR clock
-#define KXG03_FSYNC_CTL_FSYNC_SEL_AUX2_ODR (0x03 << 0)
-// SYNC pin disabled.
-#define KXG03_FSYNC_CTL_FSYNC_SEL_DISABLED_1 (0x04 << 0)
-// SYNC pin disabled.
-#define KXG03_FSYNC_CTL_FSYNC_SEL_DISABLED_2 (0x05 << 0)
-// SYNC pin disabled.
-#define KXG03_FSYNC_CTL_FSYNC_SEL_DISABLED_3 (0x06 << 0)
-// SYNC pin disabled.
-#define KXG03_FSYNC_CTL_FSYNC_SEL_DISABLED_4 (0x07 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG03_FSYNC_CTL_FSYNC_SEL_SEL000 (0x00 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG03_FSYNC_CTL_FSYNC_SEL_SEL001 (0x01 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG03_FSYNC_CTL_FSYNC_SEL_SEL010 (0x02 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG03_FSYNC_CTL_FSYNC_SEL_SEL011 (0x03 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG03_FSYNC_CTL_FSYNC_SEL_SEL100 (0x04 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG03_FSYNC_CTL_FSYNC_SEL_SEL101 (0x05 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG03_FSYNC_CTL_FSYNC_SEL_SEL110 (0x06 << 0)
+// Definition according FSYNC_MODE selection
+#define KXG03_FSYNC_CTL_FSYNC_SEL_SEL111 (0x07 << 0)
 // Active high back-to-sleep function enable
 #define KXG03_WAKE_SLEEP_CTL1_BTS_EN (0x01 << 7)
 // Active high wake-up function enable.
@@ -841,15 +810,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG03_BUF_CTL2_BUF_GYR_W_Y (0x01 << 1)
 #define KXG03_BUF_CTL2_BUF_GYR_W_Z (0x01 << 0)
 // controls the Temperature input into the sample buffer.
-#define KXG03_BUF_CTL3_BUF_TEMP_W (0x01 << 6)
+#define KXG03_BUF_CTL3_BUF_TEMP_S (0x01 << 6)
 // controls the Accelerometer axis input into the sample buffer.
-#define KXG03_BUF_CTL3_BUF_ACC_W_X (0x01 << 5)
-#define KXG03_BUF_CTL3_BUF_ACC_W_Y (0x01 << 4)
-#define KXG03_BUF_CTL3_BUF_ACC_W_Z (0x01 << 3)
+#define KXG03_BUF_CTL3_BUF_ACC_S_X (0x01 << 5)
+#define KXG03_BUF_CTL3_BUF_ACC_S_Y (0x01 << 4)
+#define KXG03_BUF_CTL3_BUF_ACC_S_Z (0x01 << 3)
 // controls the Gyroscope axis input into the sample buffer.
-#define KXG03_BUF_CTL3_BUF_GYR_W_X (0x01 << 2)
-#define KXG03_BUF_CTL3_BUF_GYR_W_Y (0x01 << 1)
-#define KXG03_BUF_CTL3_BUF_GYR_W_Z (0x01 << 0)
+#define KXG03_BUF_CTL3_BUF_GYR_S_X (0x01 << 2)
+#define KXG03_BUF_CTL3_BUF_GYR_S_Y (0x01 << 1)
+#define KXG03_BUF_CTL3_BUF_GYR_S_Z (0x01 << 0)
 // controls the aux2 input into the sample buffer in sleep mode.
 #define KXG03_BUF_CTL4_BUF_AUX2_S (0x01 << 3)
 // controls the aux1 axis input into the sample buffer in sleep mode
@@ -866,6 +835,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG03_BUF_EN_BUF_M_STREAM (0x01 << 0)
 #define KXG03_BUF_EN_BUF_M_TRIGGER (0x02 << 0)
 #define KXG03_BUF_EN_BUF_M_FILO (0x03 << 0)
+#define KXG03_BUF_STATUS_BUF_TRIG (0x01 << 7)
  /*registers bit masks */
 
 #define KXG03_AUX_STATUS_AUX2ST_MASK 0x30
@@ -928,9 +898,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG03_INT_PIN_CTL_IEL1_MASK 0x03
 
 #define KXG03_FSYNC_CTL_FSYNC_MODE_MASK 0x30
-// if(fsync_mode=2'b10)
-#define KXG03_FSYNC_CTL_FSYNC_SEL_MASK 0x07
-// if(fsync_mode=2'b11)
+
 #define KXG03_FSYNC_CTL_FSYNC_SEL_MASK 0x07
 // the Output Data Rate for the wake up (motion detection).
 #define KXG03_WAKE_SLEEP_CTL1_OWUF_MASK 0x07

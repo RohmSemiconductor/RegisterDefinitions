@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2016 Kionix Inc.
+Copyright (c) 2017 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -25,9 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef __KXCNL_REGISTERS_H__
 #define __KXCNL_REGISTERS_H__
 /* registers */
-// This register can be used for optional supplier information.
 #define KXCNL_INFO1 0x0D
-// A second register can be used for optional supplier information.
 #define KXCNL_INFO2 0x0E
 // This register can be used for supplier recognition (Who I Am ID),
 #define KXCNL_WIA 0x0F
@@ -42,9 +40,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXCNL_LC_H 0x17
 // This register reports the status of the accelerometer outputs
 #define KXCNL_STAT 0x18
-// Peak detector value for Next condition of State Program 1.
 #define KXCNL_PEAK1 0x19
-// Peak detector value for Next condition of State Program 2
 #define KXCNL_PEAK2 0x1A
 // Read/write control register that controls the main feature set
 #define KXCNL_CNTL1 0x1B

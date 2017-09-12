@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2016 Kionix Inc.
+Copyright (c) 2017 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -33,12 +33,19 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KMX62_INS3 0x03
 #define KMX62_INL 0x05
 #define KMX62_ACCEL_XOUT_L 0x0A
+#define KMX62_ACCEL_XOUT_H 0x0B
 #define KMX62_ACCEL_YOUT_L 0x0C
+#define KMX62_ACCEL_YOUT_H 0x0D
 #define KMX62_ACCEL_ZOUT_L 0x0E
+#define KMX62_ACCEL_ZOUT_H 0x0F
 #define KMX62_MAG_XOUT_L 0x10
+#define KMX62_MAG_XOUT_H 0x11
 #define KMX62_MAG_YOUT_L 0x12
+#define KMX62_MAG_YOUT_H 0x13
 #define KMX62_MAG_ZOUT_L 0x14
+#define KMX62_MAG_ZOUT_H 0x15
 #define KMX62_TEMP_OUT_L 0x16
+#define KMX62_TEMP_OUT_H 0x17
 // Interrupts reported on GPIO1.
 #define KMX62_INC1 0x2A
 // Interrupts reported on GPIO2.
@@ -49,21 +56,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KMX62_INC4 0x2D
 // This register controls which magnetometer axis and direction of detected motion can cause an interrupt.
 #define KMX62_INC5 0x2E
-// This register has control settings for the accelerometer motion interrupt function.
 #define KMX62_AMI_CNTL1 0x2F
-// This register has control settings for the accelerometer motion interrupt function.
 #define KMX62_AMI_CNTL2 0x30
 // Accelerometer Motion Control 3: This register has control settings for the accelerometer motion interrupt function.
 #define KMX62_AMI_CNTL3 0x31
-// Magnetometer Motion Control 1 This register has control settings for the magnetometer motion interrupt function.
 #define KMX62_MMI_CNTL1 0x32
-// Magnetometer Motion Control 2 This register has control settings for the magnetometer motion interrupt function.
 #define KMX62_MMI_CNTL2 0x33
 // Magnetometer Motion Control 3 This register has control settings for the magnetometer motion interrupt function.
 #define KMX62_MMI_CNTL3 0x34
-// Free Fall Control 1 This register has control settings for the free fall interrupt function.
 #define KMX62_FFI_CNTL1 0x35
-// Free Fall Control 2 This register has control settings for the free fall interrupt function.
 #define KMX62_FFI_CNTL2 0x36
 // Free Fall Control 3 This register has control settings for the free fall interrupt function.
 #define KMX62_FFI_CNTL3 0x37
@@ -80,12 +81,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KMX62_BUF_CTRL_2 0x78
 // These registers control the buffer sample buffer operation.
 #define KMX62_BUF_CTRL_3 0x79
-// Latched buffer status information and the entire sample buffer are cleared when any data is written to this register.
 #define KMX62_BUF_CLEAR 0x7A
 #define KMX62_BUF_STATUS_1 0x7B
 #define KMX62_BUF_STATUS_2 0x7C
 #define KMX62_BUF_STATUS_3 0x7D
-// Data in the buffer can be read according to the BUF_M settings in BUF_CTRL2 by executing this command.  More samples can be retrieved by continuing to toggle SCL after the read command is executed.  Data should by using auto-increment.  Additional samples cannot be written to the buffer while data is being read from the buffer using auto-increment mode.  Output data is in 2s Complement format.
 #define KMX62_BUF_READ 0x7E
 /* registers bits */
 // WHO_AM_I -value
@@ -408,7 +407,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KMX62_BUF_STATUS_2_BUF_TRIG (0x01 << 1)
 #define KMX62_BUF_STATUS_2_SMP_LEV_H (0x01 << 0)
  /*registers bit masks */
-
 #define KMX62_WHO_AM_I_WIA_MASK 0xFF
 // reports the combined (OR) interrupt information of all enabled interrupt.
 #define KMX62_INS1_INT_MASK 0x80

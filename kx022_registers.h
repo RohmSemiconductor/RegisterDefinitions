@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2016 Kionix Inc.
+Copyright (c) 2017 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -80,33 +80,20 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_INC5 0x20
 // This register controls routing of interrupt reporting to physical interrupt pin INT2
 #define KX022_INC6 0x21
-// This register is the initial count register for the tilt position state timer
 #define KX022_TILT_TIMER 0x22
-// This register is the initial count register for the motion detection timer
 #define KX022_WUFC 0x23
 // This register is responsible for enableing/disabling reporting of Tap/Double Tap.
 #define KX022_TDTRC 0x24
-// This register contains counter information for the detection of a double tap event.
 #define KX022_TDTC 0x25
-// This register represents the 8-bit jerk high threshold to determine if a tap is detected.
 #define KX022_TTH 0x26
-// This register represents the 8-bit (0d 255d) jerk low threshold to determine if a tap is detected.
 #define KX022_TTL 0x27
-// This register contains counter information for the detection of any tap event.
 #define KX022_FTD 0x28
-// This register contains counter information for the detection of a double tap event
 #define KX022_STD 0x29
-// This register contains counter information for the detection of a tap event.
 #define KX022_TLT 0x2A
-// This register contains counter information for the detection of single and double taps.
 #define KX022_TWS 0x2B
-// This register sets the threshold for wake-up (motion detect) interrupt is set.
 #define KX022_ATH 0x30
-// This register sets the low level threshold for tilt angle detection.
 #define KX022_TILT_ANGLE_LL 0x32
-// This register sets the high level threshold for tilt angle detection.
 #define KX022_TILT_ANGLE_HL 0x33
-// This register sets the Hysteresis that is placed in between the Screen Rotation states
 #define KX022_HYST_SET 0x34
 // Low Power Control sets the number of samples of accelerometer output to be average
 #define KX022_LP_CNTL 0x35
@@ -118,9 +105,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_BUF_STATUS_1 0x3C
 // This register reports the status of the sample buffer trigger function
 #define KX022_BUF_STATUS_2 0x3D
-// Latched buffer status information and the entire sample buffer are cleared when any data is written to this register.
 #define KX022_BUF_CLEAR 0x3E
-// Buffer output register
 #define KX022_BUF_READ 0x3F
 // When 0xCA is written to this register, the MEMS self-test function is enabled. Electrostatic-actuation of the accelerometer, results in a DC shift of the X, Y and Z axis outputs. Writing 0x00 to this register will return the accelerometer to normal operation
 #define KX022_SELF_TEST 0x60
@@ -277,10 +262,14 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_CNTL3_OWUF_50 (0x06 << 0)
 // 100Hz
 #define KX022_CNTL3_OWUF_100 (0x07 << 0)
-// low-pass filter roll off control
-#define KX022_ODCNTL_IIR_BYPASS (0x01 << 7)
-// low pass filter enable
-#define KX022_ODCNTL_LPRO (0x01 << 6)
+// filtering applied
+#define KX022_ODCNTL_IIR_BYPASS_APPLY (0x00 << 7)
+// filter bypassed
+#define KX022_ODCNTL_IIR_BYPASS_BYPASS (0x01 << 7)
+// filter corner frequency set to ODR/9
+#define KX022_ODCNTL_LPRO_ODR_9 (0x00 << 6)
+// filter corner frequency set to ODR/2
+#define KX022_ODCNTL_LPRO_ODR_2 (0x01 << 6)
 // 12.5Hz
 #define KX022_ODCNTL_OSA_12P5 (0x00 << 0)
 // 25Hz
@@ -430,6 +419,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_CNTL3_OTDT_MASK 0x38
 // sets the output data rate for the general motion detection function and the high-pass filtered outputs
 #define KX022_CNTL3_OWUF_MASK 0x07
+// filter bypass mode
+#define KX022_ODCNTL_IIR_BYPASS_MASK 0x80
+// low-pass filter roll off control
+#define KX022_ODCNTL_LPRO_MASK 0x40
 // acceleration output data rate.
 #define KX022_ODCNTL_OSA_MASK 0x0F
 #define KX022_INC2_WUE_MASK 0x3F

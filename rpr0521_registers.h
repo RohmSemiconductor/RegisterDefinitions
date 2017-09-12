@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2016 Rohm Semiconductor
+Copyright (c) 2017 Rohm Semiconductor
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -30,17 +30,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define RPR0521_MODE_CONTROL 0x41
 #define RPR0521_ALS_PS_CONTROL 0x42
 #define RPR0521_PS_CONTROL 0x43
-// low 8bit
 #define RPR0521_PS_DATA_LSBS 0x44
-// high 4bit
 #define RPR0521_PS_DATA_MSBS 0x45
-// low 8bit
 #define RPR0521_ALS_DATA0_LSBS 0x46
-// high 8bit
 #define RPR0521_ALS_DATA0_MSBS 0x47
-// low 8bit
 #define RPR0521_ALS_DATA1_LSBS 0x48
-// high 8bit
 #define RPR0521_ALS_DATA1_MSBS 0x49
 #define RPR0521_INTERRUPT 0x4A
 // low 8bit
@@ -138,6 +132,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define RPR0521_INTERRUPT_INT_MODE_PS_TH_H_ACTIVE (0x00 << 4)
 #define RPR0521_INTERRUPT_INT_MODE_PS_TH_HYSTERESIS (0x01 << 4)
 #define RPR0521_INTERRUPT_INT_MODE_PS_TH_OUTSIDE_DETECTION (0x02 << 4)
+#define RPR0521_INTERRUPT_INT_MODE_FORBIDDEN (0x03 << 4)
 #define RPR0521_INTERRUPT_INT_ASSERT_STABLE (0x00 << 3)
 #define RPR0521_INTERRUPT_INT_ASSERT_REINT (0x01 << 3)
 #define RPR0521_INTERRUPT_INT_LATCH_ENABLED (0x00 << 2)

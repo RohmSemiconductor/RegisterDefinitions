@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2016 Kionix Inc.
+Copyright (c) 2017 Kionix Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -44,7 +44,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXCJB_INT_SOURCE2 0x17
 // This register reports the status of the interrupt
 #define KXCJB_STATUS_REG 0x18
-// Latched interrupt source information
 #define KXCJB_INT_REL 0x1A
 // Read/write control register that controls the main feature set
 #define KXCJB_CTRL_REG1 0x1B
@@ -56,10 +55,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXCJB_INT_CTRL_REG2 0x1F
 // Read/write control register that configures the acceleration outputs
 #define KXCJB_DATA_CTRL_REG 0x21
-// This register sets the time motion must be present before a wake-up interrupt is set
 #define KXCJB_WAKEUP_TIMER 0x29
 #define KXCJB_SELF_TEST 0x3A
-// This register sets the threshold for wake-up (motion detect) interrupt is se
 #define KXCJB_WAKEUP_THRESHOLD 0x6A
 /* registers bits */
 // before set
@@ -169,7 +166,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // charge off
 #define KXCJB_SELF_TEST_TEST_DISABLE (0x00 << 0)
  /*registers bit masks */
-
 #define KXCJB_DCST_RESP_COM_TEST_MASK 0xFF
 
 #define KXCJB_WHO_AM_I_WIA_MASK 0xFF
