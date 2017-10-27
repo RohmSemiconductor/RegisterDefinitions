@@ -120,8 +120,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXG08_BTS_TH 0x49
 #define KXG08_BTSWUF_TH 0x4A
 #define KXG08_WUF_TH 0x4B
-#define KXG08_WUF_COUNTER 0x4C
-#define KXG08_BTS_COUNTER 0x4D
+#define KXG08_BTS_COUNTER 0x4C
+#define KXG08_WUF_COUNTER 0x4D
 // Wake and Sleep control register 1.
 #define KXG08_WAKE_SLEEP_CTL1 0x4E
 // WUF and BTS threshold mode.
