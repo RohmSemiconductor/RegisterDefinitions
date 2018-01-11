@@ -59,12 +59,14 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // When 0xCA is written to this register, the MEMS self-test function is enabled
 #define KXTJ2_SELF_TEST 0x3A
 #define KXTJ2_WAKEUP_THRESHOLD 0x6A
+// This register can be used for supplier recognition, as it can be factory written to a known byte value.
+#define KXCJB_WHO_AM_I 0x0F
 /* registers bits */
 // before set
 #define KXTJ2_DCST_RESP_COM_TEST_BEFORE (0x55 << 0)
 // after set
 #define KXTJ2_DCST_RESP_COM_TEST_AFTER (0xAA << 0)
-// WHO_AM_I -value
+// WHO_AM_I -value for KXTJ2
 #define KXTJ2_WHO_AM_I_WIA_ID (0x09 << 0)
 // indicates that new acceleration data
 #define KXTJ2_INT_SOURCE1_DRDY (0x01 << 4)
@@ -168,7 +170,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXTJ2_SELF_TEST_TEST_ENABLE (0xCA << 0)
 // charge off
 #define KXTJ2_SELF_TEST_TEST_DISABLE (0x00 << 0)
+// WHO_AM_I -value for KXCJB
+#define KXCJB_WHO_AM_I_WIA_ID (0x21 << 0)
  /*registers bit masks */
+
 #define KXTJ2_DCST_RESP_COM_TEST_MASK 0xFF
 
 #define KXTJ2_WHO_AM_I_WIA_MASK 0xFF
@@ -180,5 +185,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXTJ2_DATA_CTRL_REG_OSA_MASK 0x0F
 
 #define KXTJ2_SELF_TEST_TEST_MASK 0xFF
+
+#define KXCJB_WHO_AM_I_WIA_MASK 0xFF
 #endif
 

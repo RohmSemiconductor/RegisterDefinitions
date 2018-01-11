@@ -61,12 +61,14 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXTJ3_SELF_TEST 0x3A
 #define KXTJ3_WAKEUP_THRESHOLD_H 0x6A
 #define KXTJ3_WAKEUP_THRESHOLD_L 0x6B
+// This register can be used for supplier recognition, as it can be factory written to a known byte value.
+#define KXCJC_WHO_AM_I 0x0F
 /* registers bits */
 // before set
 #define KXTJ3_DCST_RESP_DCSTR_BEFORE (0x55 << 0)
 // after set
 #define KXTJ3_DCST_RESP_DCSTR_AFTER (0xAA << 0)
-// WHO_AM_I -value
+// WHO_AM_I -value for KXTJ3
 #define KXTJ3_WHO_AM_I_WIA_ID (0x35 << 0)
 // indicates that new acceleration data
 #define KXTJ3_INT_SOURCE1_DRDY (0x01 << 4)
@@ -182,7 +184,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXTJ3_SELF_TEST_MEMS_TEST_ENABLE (0xCA << 0)
 // charge off
 #define KXTJ3_SELF_TEST_MEMS_TEST_DISABLE (0x00 << 0)
+// WHO_AM_I -value for KXCJC
+#define KXCJC_WHO_AM_I_WIA_ID (0x36 << 0)
  /*registers bit masks */
+
 #define KXTJ3_DCST_RESP_DCSTR_MASK 0xFF
 
 #define KXTJ3_WHO_AM_I_WIA_MASK 0xFF
@@ -194,5 +199,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXTJ3_DATA_CTRL_REG_OSA_MASK 0x0F
 
 #define KXTJ3_SELF_TEST_MEMS_TEST_MASK 0xFF
+
+#define KXCJC_WHO_AM_I_WIA_MASK 0xFF
 #endif
 

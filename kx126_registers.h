@@ -141,6 +141,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX126_BUF_STATUS_2 0x5D
 #define KX126_BUF_CLEAR 0x5E
 #define KX126_BUF_READ 0x5F
+// This register can be used for supplier recognition
+#define KX127_WHO_AM_I 0x11
 /* registers bits */
 // before set
 #define KX126_COTR_DCSTR_BEFORE (0x55 << 0)
@@ -574,7 +576,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX126_BUF_CNTL2_BUF_BM_FILO (0x03 << 0)
 // reports the status of the buffers trigger function if this mode has been selected
 #define KX126_BUF_STATUS_2_BUF_TRIG (0x01 << 7)
+// WAI value for KX127
+#define KX127_WHO_AM_I_WAI_ID (0x3B << 0)
  /*registers bit masks */
+// Command Test Response
 #define KX126_COTR_DCSTR_MASK 0xFF
 
 #define KX126_WHO_AM_I_WAI_MASK 0xFF
@@ -625,5 +630,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // selects the operating mode of the sample buffer
 #define KX126_BUF_CNTL2_BUF_BM_MASK 0x03
 #define KX126_BUF_STATUS_2_SMP_LEV8_11_MASK 0x0F
+
+#define KX127_WHO_AM_I_WAI_MASK 0xFF
 #endif
 
