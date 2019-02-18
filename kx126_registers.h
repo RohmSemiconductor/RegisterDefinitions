@@ -492,22 +492,22 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX126_FFCNTL_ULMODE (0x01 << 6)
 // DCRM - Debounce methodology control, 0=count up/down, 1=count up/reset.
 #define KX126_FFCNTL_DCRM (0x01 << 3)
-// 000 = 0.781Hz
-#define KX126_FFCNTL_OFFI_0P781 (0x00 << 0)
-// 001 = 1.563Hz
-#define KX126_FFCNTL_OFFI_1P563 (0x01 << 0)
-// 010 = 3.125Hz
-#define KX126_FFCNTL_OFFI_3P125 (0x02 << 0)
-// 011 = 6.25Hz
-#define KX126_FFCNTL_OFFI_6P25 (0x03 << 0)
-// 100 = 12.5Hz
-#define KX126_FFCNTL_OFFI_12P5 (0x04 << 0)
-// 101 = 25Hz
-#define KX126_FFCNTL_OFFI_25 (0x05 << 0)
-// 110 = 50Hz
-#define KX126_FFCNTL_OFFI_50 (0x06 << 0)
-// 111 = 100Hz
-#define KX126_FFCNTL_OFFI_100 (0x07 << 0)
+// 000 = 12.5Hz
+#define KX126_FFCNTL_OFFI_12P5 (0x00 << 0)
+// 001 = 25Hz
+#define KX126_FFCNTL_OFFI_25 (0x01 << 0)
+// 010 = 50Hz
+#define KX126_FFCNTL_OFFI_50 (0x02 << 0)
+// 011 = 100Hz
+#define KX126_FFCNTL_OFFI_100 (0x03 << 0)
+// 100 = 200Hz
+#define KX126_FFCNTL_OFFI_200 (0x04 << 0)
+// 101 = 400Hz
+#define KX126_FFCNTL_OFFI_400 (0x05 << 0)
+// 110 = 800Hz
+#define KX126_FFCNTL_OFFI_800 (0x06 << 0)
+// 111 = 1600Hz
+#define KX126_FFCNTL_OFFI_1600 (0x07 << 0)
 // No Averaging
 #define KX126_LP_CNTL_AVC_NO_AVG (0x00 << 4)
 // 2 Samples Averaged
