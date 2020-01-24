@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2017 Kionix Inc.
+Copyright (c) 2020 Rohm Semiconductor
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -25,14 +25,17 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef __KXTJ3_REGISTERS_H__
 #define __KXTJ3_REGISTERS_H__
 /* registers */
-// output register x
+// output register x.
 #define KXTJ3_XOUT_L 0x06
+// msb
 #define KXTJ3_XOUT_H 0x07
 // output register y
 #define KXTJ3_YOUT_L 0x08
+// msb
 #define KXTJ3_YOUT_H 0x09
 // output register z
 #define KXTJ3_ZOUT_L 0x0A
+// msb
 #define KXTJ3_ZOUT_H 0x0B
 // This register can be used to verify proper integrated circuit functionality
 #define KXTJ3_DCST_RESP 0x0C
@@ -59,6 +62,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXTJ3_NA_COUNTER 0x2A
 // When 0xCA is written to this register, the MEMS self-test function is enabled
 #define KXTJ3_SELF_TEST 0x3A
+// Those registers (12-bits)sets the threshold for wake-up (motion detect) interrupt is set
 #define KXTJ3_WAKEUP_THRESHOLD_H 0x6A
 #define KXTJ3_WAKEUP_THRESHOLD_L 0x6B
 // This register can be used for supplier recognition, as it can be factory written to a known byte value.
@@ -110,8 +114,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXTJ3_CTRL_REG1_GSEL_8G_14 (0x06 << 2)
 // 16g range with 14b resolution
 #define KXTJ3_CTRL_REG1_GSEL_16G_14 (0x07 << 2)
-// enables 14-bit mode if GSEL = '11'
-#define KXTJ3_CTRL_REG1_EN16G (0x01 << 2)
 // enables the Wake Up (motion detect) function.
 #define KXTJ3_CTRL_REG1_WUFE (0x01 << 1)
 // initiates software reset
@@ -152,10 +154,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KXTJ3_INT_CTRL_REG2_YNWU (0x01 << 3)
 // y+
 #define KXTJ3_INT_CTRL_REG2_YPWU (0x01 << 2)
-// z-
-#define KXTJ3_INT_CTRL_REG2_ZNWU (0x01 << 1)
-// z+
-#define KXTJ3_INT_CTRL_REG2_ZPWU (0x01 << 0)
 // 12.5Hz
 #define KXTJ3_DATA_CTRL_REG_OSA_12P5 (0x00 << 0)
 // 25Hz
@@ -187,18 +185,22 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // WHO_AM_I -value for KXCJC
 #define KXCJC_WHO_AM_I_WIA_ID (0x36 << 0)
  /*registers bit masks */
-
+// msb
 #define KXTJ3_DCST_RESP_DCSTR_MASK 0xFF
-
+// WHO_AM_I
 #define KXTJ3_WHO_AM_I_WIA_MASK 0xFF
 // selects the acceleration range of the accelerometer outputs
 #define KXTJ3_CTRL_REG1_GSEL_MASK 0x1C
 // sets the Output Data Rate for the Wake Up function
 #define KXTJ3_CTRL_REG2_OWUF_MASK 0x07
+#define KXTJ3_INT_CTRL_REG2_ZPWUE_MASK 0x03
 // sets the output data rate (ODR)
 #define KXTJ3_DATA_CTRL_REG_OSA_MASK 0x0F
-
+#define KXTJ3_WAKEUP_COUNTER_WUFC_MASK 0xFF
+#define KXTJ3_NA_COUNTER_NAFC_MASK 0xFF
+// Self test value
 #define KXTJ3_SELF_TEST_MEMS_TEST_MASK 0xFF
+#define KXTJ3_WAKEUP_THRESHOLD_L_WUTH_L_MASK 0xF0
 
 #define KXCJC_WHO_AM_I_WIA_MASK 0xFF
 #endif

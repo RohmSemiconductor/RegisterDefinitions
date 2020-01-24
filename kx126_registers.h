@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2017 Kionix Inc.
+Copyright (c) 2020 Rohm Semiconductor
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -27,105 +27,117 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 /* registers */
 #define KX126_MAN_ID 0x00
 #define KX126_PART_ID 0x01
-// x - hp filter output
+// x - hp filter output.
 #define KX126_XHP_L 0x02
+// msb
 #define KX126_XHP_H 0x03
 // y - hp filter output
 #define KX126_YHP_L 0x04
+// msb
 #define KX126_YHP_H 0x05
 // z - hpfilteroutput
 #define KX126_ZHP_L 0x06
+// msb
 #define KX126_ZHP_H 0x07
 // output register x
 #define KX126_XOUT_L 0x08
+// msb
 #define KX126_XOUT_H 0x09
 // output register y
 #define KX126_YOUT_L 0x0A
+// msb
 #define KX126_YOUT_H 0x0B
 // output register z
 #define KX126_ZOUT_L 0x0C
+// msb
 #define KX126_ZOUT_H 0x0D
 // 16bit pedometer step counter register
 #define KX126_PED_STP_L 0x0E
+// msb
 #define KX126_PED_STP_H 0x0F
-// Command Test Response
+// The Command Test Response (COTR) register is used to verify proper integrated circuit functionality
 #define KX126_COTR 0x10
 // This register can be used for supplier recognition
 #define KX126_WHO_AM_I 0x11
-// This registers report current position data that is updated at the user-defined ODR frequency determined by OTP<1:0> in CNTL3
+// The Tilt Status Current Position (TSCP) register reports the current tilt position.
 #define KX126_TSCP 0x12
-// This register report previous and current position data that is updated at the user-defined ODR frequency determined by OTP<1:0> in CNTL3
+// The Tilt Status Previous Position (TSPP) register reports previous tilt position.
 #define KX126_TSPP 0x13
-// This register contains 2 step counter interrupts and contains the tap/double tap axis specific interrupts. Data is updated at the ODR settings determined by OTDT<2:0> in CNTL3.
+// The Interrupt Source 1 (INS1) register contains 2 step counter interrupts and contains the Tap/Double-TapTM axis specific interrupts.
 #define KX126_INS1 0x14
 // This Register tells witch function caused an interrupt.
 #define KX126_INS2 0x15
-// This register reports the axis and direction of detected motion and wake-up + back to sleep interrupts
+// The Interrupt Source 3 (INS3) register reports the interrupt status of the Wake-Up and Back-to-Sleep functions, as well as the axis and direction of the Wake-Up detected motion.
 #define KX126_INS3 0x16
-// Status register
+// The Status Register reports the status of whether the interrupt is present.
 #define KX126_STAT 0x17
 #define KX126_INT_REL 0x19
 // Control register 1. Read/write control register that controls the main feature set.
 #define KX126_CNTL1 0x1A
-// Control settings 2. Read/write control register that primarily controls tilt position state enabling.
+// The Control 2 (CNTL2) register primarily controls tilt position state enabling.
 #define KX126_CNTL2 0x1B
-// Control settings 3. Read/write control register that provides more feature set control.
+// The Control 3 (CNTL3) register sets the output data rates for Tilt, Directional-TapTM, and the Motion Wake-Up digital engines.
 #define KX126_CNTL3 0x1C
-// Control settings 4
+// The Control 4 (CNTL4) register 4 provides more feature set control
 #define KX126_CNTL4 0x1D
-// Control settings 5
+// The Control 5 (CNTL5) register provides additional controls for wake-sleep engine
 #define KX126_CNTL5 0x1E
-// This register is responsible for configuring ODR (output data rate) and filter settings
+// The ODR Control (ODCNTL) register is responsible for configuring Output Data Rate (ODR) and low-pass filter settings.
 #define KX126_ODCNTL 0x1F
-// Interrupt control 1. This register controls the settings for the physical interrupt pin INT1
+// The Interrupt Control 1 (INC1) register controls the settings for the physical interrupt pin INT1, the Self-test function, and 3-wire SPI interface.
 #define KX126_INC1 0x20
-// Interrupt control 2. This register controls which axis and direction of detected motion can cause an interrupt.
+// The Interrupt Control 2 (INC2) register controls which axis and direction of detected motion can cause an interrupt.
 #define KX126_INC2 0x21
-// Interrupt control 3. This register controls which axis and direction of tap/double tap can cause an interrupt.
+// The Interrupt Control 3 (INC3) register controls which axis and direction of Tap/Double-TapTM can cause an interrupt.
 #define KX126_INC3 0x22
-// Interrupt control 4. This register controls routing of an interrupt reporting to physical interrupt pin INT1
+// The Interrupt Control 4 (INC4) register controls routing of an interrupt reporting to physical interrupt pin INT1.
 #define KX126_INC4 0x23
-// Interrupt control 5. This register controls the settings for the physical interrupt pin INT2.
+// The Interrupt Control 5 (INC5) register controls the settings for the physical interrupt pin INT2.
 #define KX126_INC5 0x24
-// Interrupt control 6. This register controls routing of interrupt reporting to physical interrupt pin INT2
+// The Interrupt Control 6 (INC6) register controls routing of interrupt reporting to physical interrupt pin INT2.
 #define KX126_INC6 0x25
-// Interrupt control 7This register controls routing of interrupt reporting to physical interrupt pins INT1 and INT2
+// The Interrupt Control 7 (INC7) register controls the pedometer (step counter) engine.
 #define KX126_INC7 0x26
 #define KX126_TILT_TIMER 0x27
-// Tap/Double Tap report control. This register is responsible for enableing/disabling reporting of Tap/Double Tap. Reset applied for any write to TDTRC with TDTE enabled
+// The Tap/Double-TapTM Report Control (TDTRC) register is responsible for enabling/disabling reporting of Tap/Double-TapTM events.
 #define KX126_TDTRC 0x28
 #define KX126_TDTC 0x29
 #define KX126_TTH 0x2A
 #define KX126_TTL 0x2B
+// This register contains counter information for the detection of any tap event.
 #define KX126_FTD 0x2C
 #define KX126_STD 0x2D
 #define KX126_TLT 0x2E
 #define KX126_TWS 0x2F
 #define KX126_FFTH 0x30
 #define KX126_FFC 0x31
-// Freefall interrupt control.
+// The Free Fall Control (FFCNTL) register contains the control setting of the Free fall detection.
 #define KX126_FFCNTL 0x32
 #define KX126_TILT_ANGLE_LL 0x34
 #define KX126_TILT_ANGLE_HL 0x35
 #define KX126_HYST_SET 0x36
+// Low Power Control
 #define KX126_LP_CNTL 0x37
+// Wake-up Function Threshold (WUFTH), Back-to-Sleep and Wake-Up Function Threshold (BTSWUFTH), and Back-to-Sleep Threshold (BTSTH) registers set the thresholds for Wake-up and Back-to-Sleep engines.
 #define KX126_WUFTH 0x3C
-// Additional threshold bits for WUF and BTS. Resolution is 8g/2^11=3.9mg/cnt    Assuming the engine gets 12bit signed data (ADC 10bits + 2bits for 16x Oversampling). Reset applied for any write to BTSWUFTH with WUFE or BTSE enabled
+// Wake-up Function Threshold (WUFTH), Back-to-Sleep and Wake-Up Function Threshold (BTSWUFTH), and Back-to-Sleep Threshold (BTSTH) registers set the thresholds for Wake-up and Back-to-Sleep engines.
 #define KX126_BTSWUFTH 0x3D
+// Wake-up Function Threshold (WUFTH), Back-to-Sleep and Wake-Up Function Threshold (BTSWUFTH), and Back-to-Sleep Threshold (BTSTH) registers set the thresholds for Wake-up and Back-to-Sleep engines.
 #define KX126_BTSTH 0x3E
 #define KX126_BTSC 0x3F
 #define KX126_WUFC 0x40
 #define KX126_PED_STPWM_L 0x41
 #define KX126_PED_STPWM_H 0x42
-// Pedometer control register 1
+// Pedometer Control register 1 (PED_CNTL1). The setting of this register is affected by pedometer engine ODR selection.
 #define KX126_PED_CNTL1 0x43
 // Pedometer control register 2.
 #define KX126_PED_CNTL2 0x44
-// Pedometer control register 3
+// Pedometer Control register 3 (PED_CNTL3).
 #define KX126_PED_CNTL3 0x45
-// Pedometer control register 4
+// Pedometer Control register 4 (PED_CNTL4).
 #define KX126_PED_CNTL4 0x46
 #define KX126_PED_CNTL5 0x47
+// Pedometer Control register 6 (PED_CNTL6). The setting of this register is affected by pedometer engine ODR selection.
 #define KX126_PED_CNTL6 0x48
 #define KX126_PED_CNTL7 0x49
 #define KX126_PED_CNTL8 0x4A
@@ -133,11 +145,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX126_PED_CNTL10 0x4C
 // Self test initiation
 #define KX126_SELF_TEST 0x4D
+// The Buffer Control 1 (BUF_CNTL1) register controls the buffer sample threshold
 #define KX126_BUF_CNTL1 0x5A
-// Read/write control register that controls sample buffer operation
+// The Buffer Control 2 (BUF_CNTL2) register controls sample buffer operation
 #define KX126_BUF_CNTL2 0x5B
+// Buffer Status: These register reports the status of the sample buffer.
 #define KX126_BUF_STATUS_1 0x5C
-// This register reports the status of the sample buffer trigger function
+// Buffer Status: These register reports the status of the sample buffer.
 #define KX126_BUF_STATUS_2 0x5D
 #define KX126_BUF_CLEAR 0x5E
 #define KX126_BUF_READ 0x5F
@@ -332,9 +346,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX126_CNTL4_OBTS_50 (0x06 << 0)
 // 111 = 100Hz
 #define KX126_CNTL4_OBTS_100 (0x07 << 0)
-// man_wake - manual wake mode overwrite (forces ASIC into wake mode)
+// The manual wake overwrite bit
 #define KX126_CNTL5_MAN_WAKE (0x01 << 1)
-// man_sleep - manual sleep mode overwrite (forces ASIC into sleep mode)
+// The manual sleep overwrite bit
 #define KX126_CNTL5_MAN_SLEEP (0x01 << 0)
 // IIR_BYPASS - IIR filter bypass mode for debugging averaging filter.
 #define KX126_ODCNTL_IIR_BYPASS (0x01 << 7)
@@ -407,7 +421,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // ZPWUE - z positive (z+) mask for WUF, 0=disable, 1=enable.
 #define KX126_INC2_ZPWUE (0x01 << 0)
 // enables/disables alternate tap masking scheme
-#define KX126_INC3_TMEM (0x01 << 6)
+#define KX126_INC3_TMEN (0x01 << 6)
 // x negative (x-): 0 = disabled, 1 = enabled
 #define KX126_INC3_TLEM (0x01 << 5)
 // x positive (x+): 0 = disabled, 1 = enabled
@@ -581,15 +595,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  /*registers bit masks */
 // Command Test Response
 #define KX126_COTR_DCSTR_MASK 0xFF
-
+// WAI value for KX126
 #define KX126_WHO_AM_I_WAI_MASK 0xFF
-#define KX126_INS1_TP_MASK 0x3F
 // TDTS(1,0) - status of tap/double tap, bit is released when interrupt latch release register (INL (00h,17h)) is read.
 #define KX126_INS2_TDTS_MASK 0x0C
-#define KX126_INS3_WU_MASK 0x3F
 // Gsel - Selectable g-range bits
 #define KX126_CNTL1_GSEL_MASK 0x18
-#define KX126_CNTL2_TP_MASK 0x3F
 // sets the output data rate for the Tilt Position function
 #define KX126_CNTL3_OTP_MASK 0xC0
 // sets the output data rate for the Directional TapTM function
@@ -600,20 +611,36 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX126_CNTL4_OBTS_MASK 0x07
 // OSA<3:0> - Acceleration Output data rate.* Low power mode available, all other data rates will default to full power mode.
 #define KX126_ODCNTL_OSA_MASK 0x0F
-// PW1 - Pulse interrupt width on INT1
+// Pulse interrupt 1 width configuration.
 #define KX126_INC1_PW1_MASK 0xC0
 // AOI - And-Or configuration, 0=Or combination of selected directions, 1=And combination of selected axes
 #define KX126_INC2_AOI_MASK 0x40
-#define KX126_INC2_WUE_MASK 0x3F
-#define KX126_INC3_TM_MASK 0x3F
 // PW2 - Pulse interrupt width on INT2
 #define KX126_INC5_PW2_MASK 0xC0
+#define KX126_TILT_TIMER_TSC_MASK 0xFF
+#define KX126_TDTC_TDTC_MASK 0xFF
+#define KX126_TTH_TTH_MASK 0xFF
+#define KX126_TTL_TTL_MASK 0xFF
+#define KX126_FTD_FTDH_MASK 0xF8
+#define KX126_FTD_FTDL_MASK 0x07
+#define KX126_STD_STD_MASK 0xFF
+#define KX126_TLT_TLT_MASK 0xFF
+#define KX126_TWS_TWS_MASK 0xFF
+#define KX126_FFTH_FFTH_MASK 0xFF
+#define KX126_FFC_FFC_MASK 0xFF
 // OFFI<2:0> - Freefall function output data rate
 #define KX126_FFCNTL_OFFI_MASK 0x07
+#define KX126_TILT_ANGLE_LL_LL_MASK 0xFF
+#define KX126_TILT_ANGLE_HL_HL_MASK 0xFF
+#define KX126_HYST_SET_HYST_MASK 0xFF
 // Averaging Filter Control
 #define KX126_LP_CNTL_AVC_MASK 0x70
 #define KX126_BTSWUFTH_BTSTH8_10_MASK 0x70
 #define KX126_BTSWUFTH_WUFTH8_10_MASK 0x07
+#define KX126_BTSC_BTSC_MASK 0xFF
+#define KX126_WUFC_WUFC_MASK 0xFF
+#define KX126_PED_STPWM_L_PED_STPWM_L_MASK 0xFF
+#define KX126_PED_STPWM_H_PED_STPWM_H_MASK 0xFF
 // STP_TH<2:0> ; A threshold for discarding counting if not enough steps coming. Values: 0, 1, ..., 7. -> 0, 1, 2, 4, ..., 15. Reset applied for any write to PED_CNTL1 with PDE enabled
 #define KX126_PED_CNTL1_STP_TH_MASK 0x70
 #define KX126_PED_CNTL1_MAG_SCALE_MASK 0x0F
@@ -625,6 +652,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX126_PED_CNTL3_FCA_MASK 0x07
 #define KX126_PED_CNTL4_B_CNT_MASK 0x70
 #define KX126_PED_CNTL4_A_H_MASK 0x0F
+#define KX126_PED_CNTL5_A_L_MASK 0xFF
+#define KX126_PED_CNTL6_M_H5_MASK 0x3F
+#define KX126_PED_CNTL7_M_L_MASK 0xFF
+#define KX126_PED_CNTL8_T_L_MASK 0xFF
+#define KX126_PED_CNTL9_T_M_MASK 0xFF
+#define KX126_PED_CNTL10_T_P_MASK 0xFF
 #define KX126_SELF_TEST_MEMS_TEST_MASK 0xFF
 #define KX126_BUF_CNTL2_SMP_TH8_9_MASK 0x0C
 // selects the operating mode of the sample buffer

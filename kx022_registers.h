@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2017 Kionix Inc.
+Copyright (c) 2020 Rohm Semiconductor
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -25,32 +25,39 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef __KX022_REGISTERS_H__
 #define __KX022_REGISTERS_H__
 /* registers */
-// x- hp filter output
+// x- hp filter output.
 #define KX022_XHP_L 0x00
+// msb
 #define KX022_XHP_H 0x01
 // y- hp filter output
 #define KX022_YHP_L 0x02
+// msb
 #define KX022_YHP_H 0x03
 // z- hpfilteroutput
 #define KX022_ZHP_L 0x04
+// msb
 #define KX022_ZHP_H 0x05
 // output register x
 #define KX022_XOUT_L 0x06
+// msb
 #define KX022_XOUT_H 0x07
 // output register y
 #define KX022_YOUT_L 0x08
+// msb
 #define KX022_YOUT_H 0x09
 // output register z
 #define KX022_ZOUT_L 0x0A
+// msb
 #define KX022_ZOUT_H 0x0B
 // communication selftest
 #define KX022_COTR 0x0C
+// This register can be used for supplier recognition
 #define KX022_WHO_AM_I 0x0F
-// current sixfacet posititions
+// Current Tilt Position Register.
 #define KX022_TSCP 0x10
-// previous six facet positions
+// Previous Tilt Positon Register.
 #define KX022_TSPP 0x11
-// This register indicates the triggering axis when a tap/double tap interrupt occurs.
+// This register indicates the triggering axis when a tap/double tap interrupt occurs
 #define KX022_INS1 0x12
 // This register tells witch function caused an interrupt.
 #define KX022_INS2 0x13
@@ -62,9 +69,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_INT_REL 0x17
 // Read/write control register that controls the main feature set.
 #define KX022_CNTL1 0x18
-// 2' control register
+// Read/write control register that provides more feature set control.
 #define KX022_CNTL2 0x19
-// 3' controlregister
+// Read/write control register that provides more feature set control.
 #define KX022_CNTL3 0x1A
 // This register is responsible for configuring ODR (output data rate) and filter settings
 #define KX022_ODCNTL 0x1B
@@ -72,7 +79,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_INC1 0x1C
 // This register controls which axis and direction of detected motion can cause an interrupt.
 #define KX022_INC2 0x1D
-// This register controls which axis and direction of tap/double tap can cause an interrup
+// This register controls which axis and direction of tap/double tap can cause an interrupt.
 #define KX022_INC3 0x1E
 // This register controls routing of an interrupt reporting to physical interrupt pin INT1
 #define KX022_INC4 0x1F
@@ -87,6 +94,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_TDTC 0x25
 #define KX022_TTH 0x26
 #define KX022_TTL 0x27
+// This register contains counter information for the detection of any tap event.
 #define KX022_FTD 0x28
 #define KX022_STD 0x29
 #define KX022_TLT 0x2A
@@ -94,6 +102,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_ATH 0x30
 #define KX022_TILT_ANGLE_LL 0x32
 #define KX022_TILT_ANGLE_HL 0x33
+// This register sets the Hysteresis that is placed in between the Screen Rotation states
 #define KX022_HYST_SET 0x34
 // Low Power Control sets the number of samples of accelerometer output to be average
 #define KX022_LP_CNTL 0x35
@@ -109,7 +118,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_BUF_READ 0x3F
 // When 0xCA is written to this register, the MEMS self-test function is enabled. Electrostatic-actuation of the accelerometer, results in a DC shift of the X, Y and Z axis outputs. Writing 0x00 to this register will return the accelerometer to normal operation
 #define KX022_SELF_TEST 0x60
+// This register can be used for supplier recognition
 #define KX012_WHO_AM_I 0x0F
+// This register can be used for supplier recognition
 #define KX023_WHO_AM_I 0x0F
 /* registers bits */
 // before set
@@ -378,8 +389,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_LP_CNTL_AVC_64_SAMPLE_AVG (0x06 << 4)
 // 128 Samples Averaged
 #define KX022_LP_CNTL_AVC_128_SAMPLE_AVG (0x07 << 4)
-// count of samples to buffer
-#define KX022_BUF_CNTL1_SMP_TH0_6 (0x7F << 0)
 // controls activation of the sample buffer
 #define KX022_BUF_CNTL2_BUFE (0x01 << 7)
 // determines the resolution of the acceleration data samples collected by the sample
@@ -394,7 +403,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_BUF_CNTL2_BUF_M_TRIGGER (0x02 << 0)
 // The buffer holds the last 681 sets of 8-bit low resolution values or 339 sets of 16-bit high resolution values. Once the buffer is full, the oldest data is discarded to make room for newer data. Reading from the buffer in this mode will return the most recent data first.
 #define KX022_BUF_CNTL2_BUF_M_FILO (0x03 << 0)
-#define KX022_BUF_STATUS_1_SMP_LEV0_7 (0xFF << 0)
 // reports the status of the buffers trigger function if this mode has been selected
 #define KX022_BUF_STATUS_2_BUF_TRIG (0x01 << 7)
 // MEMS Test OFF
@@ -406,8 +414,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // WHO_AM_I -value for KX023
 #define KX023_WHO_AM_I_WIA_ID (0x15 << 0)
  /*registers bit masks */
+// test value
 #define KX022_COTR_DCSTR_MASK 0xFF
-
+// WHO_AM_I -value
 #define KX022_WHO_AM_I_WIA_MASK 0xFF
 // status of tap/double tap, bit is released when interrupt release register INT_REL is read.
 #define KX022_INS2_TDTS_MASK 0x0C
@@ -425,20 +434,28 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX022_ODCNTL_LPRO_MASK 0x40
 // acceleration output data rate.
 #define KX022_ODCNTL_OSA_MASK 0x0F
-#define KX022_INC2_WUE_MASK 0x3F
-#define KX022_INC3_TM_MASK 0x3F
+#define KX022_TILT_TIMER_TSC_MASK 0xFF
+#define KX022_WUFC_WUFC_MASK 0xFF
+#define KX022_TDTC_TDTC_MASK 0xFF
+#define KX022_TTH_TTH_MASK 0xFF
+#define KX022_TTL_TTL_MASK 0xFF
+#define KX022_FTD_FTDH_MASK 0xF8
+#define KX022_FTD_FTDL_MASK 0x07
+#define KX022_STD_STD_MASK 0xFF
+#define KX022_TLT_TLT_MASK 0xFF
+#define KX022_TWS_TWS_MASK 0xFF
+#define KX022_ATH_ATH_MASK 0xFF
+#define KX022_TILT_ANGLE_LL_TA_MASK 0xFF
+#define KX022_TILT_ANGLE_HL_HL_MASK 0xFF
+#define KX022_HYST_SET_RES_MASK 0xC0
 #define KX022_HYST_SET_HYST_MASK 0x3F
 // Averaging Filter Control
 #define KX022_LP_CNTL_AVC_MASK 0x70
-
-#define KX022_BUF_CNTL1_SMP_TH0_MASK 0x7F
 #define KX022_BUF_CNTL1_SMP_TH0_6_MASK 0x7F
 // selects the operating mode of the sample buffer
 #define KX022_BUF_CNTL2_BUF_M_MASK 0x03
-
-#define KX022_BUF_STATUS_1_SMP_LEV0_MASK 0xFF
 #define KX022_BUF_STATUS_1_SMP_LEV0_7_MASK 0xFF
-
+// Self test value
 #define KX022_SELF_TEST_MEMS_TEST_MASK 0xFF
 
 #define KX012_WHO_AM_I_WIA_MASK 0xFF

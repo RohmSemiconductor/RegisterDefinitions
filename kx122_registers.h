@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2017 Kionix Inc.
+Copyright (c) 2020 Rohm Semiconductor
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -25,82 +25,89 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef __KX122_REGISTERS_H__
 #define __KX122_REGISTERS_H__
 /* registers */
-// x- hp filter output
+// x- hp filter output.
 #define KX122_XHP_L 0x00
+// msb
 #define KX122_XHP_H 0x01
 // y- hp filter output
 #define KX122_YHP_L 0x02
+// msb
 #define KX122_YHP_H 0x03
 // z- hpfilteroutput
 #define KX122_ZHP_L 0x04
+// msb
 #define KX122_ZHP_H 0x05
 // output register x
 #define KX122_XOUT_L 0x06
+// msb
 #define KX122_XOUT_H 0x07
 // output register y
 #define KX122_YOUT_L 0x08
+// msb
 #define KX122_YOUT_H 0x09
 // output register z
 #define KX122_ZOUT_L 0x0A
+// msb
 #define KX122_ZOUT_H 0x0B
 // communication selftest
 #define KX122_COTR 0x0C
-// WHO_AM_I
+// This register can be used for supplier recognition
 #define KX122_WHO_AM_I 0x0F
-// current sixfacet posititions
+// Current Tilt Position Register.
 #define KX122_TSCP 0x10
-// previous six facet positions
+// Previous Tilt Positon Register.
 #define KX122_TSPP 0x11
-// This register indicates the triggering axis when a tap/double tap interrupt occurs.
+// The Interrupt Source 1 (INS1) register indicates the triggering axis when a Tap/Double interrupt occurs
 #define KX122_INS1 0x12
-// This register tells witch function caused an interrupt.
+// The Interrupt Source 2 (INS2) register reports which function caused an interrupt.
 #define KX122_INS2 0x13
-// This register reports the axis and direction of detected motion.
+// The Interrupt Source 3 (INS3) register reports the axis and direction of detected motion.
 #define KX122_INS3 0x14
-// This register reports the status of the interrupt.
+// The Status Register reports the status of whether the interrupt is present.
 #define KX122_STATUS_REG 0x15
 #define KX122_INT_REL 0x17
-// Read/write control register that controls the main feature set.
+// The Control 1 (CNTL1) register controls the main feature set of the accelerometer.
 #define KX122_CNTL1 0x18
-// 2' control register
+// The Control 2 (CNTL2) register provides additional feature set control.
 #define KX122_CNTL2 0x19
-// 3' controlregister
+// The Control 3 (CNTL3) register sets the output data rates for Tilt, Directional-TapTM, and the Motion Wake-Up digital engines.
 #define KX122_CNTL3 0x1A
-// This register is responsible for configuring ODR (output data rate) and filter settings
+// The ODR Control (ODCNTL) register is responsible for configuring Output Data Rate (ODR) and lowpass filter settings.
 #define KX122_ODCNTL 0x1B
-// This register controls the settings for the physical interrupt pin INT1
+// The Interrupt Control 1 (INC1) register controls the settings for the physical interrupt pin INT1, the Selftest function, and 3-wire SPI interface.
 #define KX122_INC1 0x1C
-// This register controls which axis and direction of detected motion can cause an interrupt.
+// The Interrupt Control 2 (INC2) register controls which axis and direction of detected motion can cause an interrupt.
 #define KX122_INC2 0x1D
-// This register controls which axis and direction of tap/double tap can cause an interrup
+// The Interrupt Control 3 (INC3) register controls which axis and direction of Tap/Double-TapTM can cause an interrupt.
 #define KX122_INC3 0x1E
-// This register controls routing of an interrupt reporting to physical interrupt pin INT1
+// The Interrupt Control 4 (INC4) register controls routing of an interrupt reporting to physical interrupt pin INT1
 #define KX122_INC4 0x1F
-// This register controls the settings for the physical interrupt pin INT2.
+// The Interrupt Control 5 (INC5) register controls the settings for the physical interrupt pin INT2.
 #define KX122_INC5 0x20
-// This register controls routing of interrupt reporting to physical interrupt pin INT2
+// The Interrupt Control 6 (INC6) register controls routing of interrupt reporting to physical interrupt pin INT2.
 #define KX122_INC6 0x21
 #define KX122_TILT_TIMER 0x22
 #define KX122_WUFC 0x23
-// This register is responsible for enableing/disabling reporting of Tap/Double Tap.
+// The Tap/Double-TapTM Report Control (TDTRC) register is responsible for enabling/disabling reporting of Tap/Double-TapTM events.
 #define KX122_TDTRC 0x24
 #define KX122_TDTC 0x25
 #define KX122_TTH 0x26
 #define KX122_TTL 0x27
+// This register contains counter information for the detection of any tap event.
 #define KX122_FTD 0x28
 #define KX122_STD 0x29
 #define KX122_TLT 0x2A
 #define KX122_TWS 0x2B
 #define KX122_FFTH 0x2C
 #define KX122_FFC 0x2D
-// Free Fall Control: This register contains the counter setting of the Free fall detection.
+// The Free Fall Control (FFCNTL) register contains the control setting of the Free fall detection.
 #define KX122_FFCNTL 0x2E
 #define KX122_ATH 0x30
 #define KX122_TILT_ANGLE_LL 0x32
 #define KX122_TILT_ANGLE_HL 0x33
-// This register sets the Hysteresis that is placed in between the Screen Rotation states
+// This register sets the Hysteresis that is placed in between the Screen Rotation states.
 #define KX122_HYST_SET 0x34
-// Low Power Control sets the number of samples of accelerometer output to be average
+// The Averaging Filter Control set
 #define KX122_LP_CNTL 0x35
 // Read/write control register that controls the buffer sample threshold
 #define KX122_BUF_CNTL1 0x3A
@@ -114,11 +121,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX122_BUF_READ 0x3F
 // When 0xCA is written to this register, the MEMS self-test function is enabled. Electrostatic-actuation of the accelerometer, results in a DC shift of the X, Y and Z axis outputs. Writing 0x00 to this register will return the accelerometer to normal operation
 #define KX122_SELF_TEST 0x60
-// WHO_AM_I
+// This register can be used for supplier recognition
 #define KX112_WHO_AM_I 0x0F
-// WHO_AM_I
+// This register can be used for supplier recognition
 #define KX123_WHO_AM_I 0x0F
-// WHO_AM_I
+// This register can be used for supplier recognition
 #define KX124_WHO_AM_I 0x0F
 /* registers bits */
 // before set
@@ -201,7 +208,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX122_CNTL1_PC1 (0x01 << 7)
 // determines the performance mode of the KX122. The noise varies with ODR, RES and different LP_CNTL settings possibly reducing the effective resolution.
 #define KX122_CNTL1_RES (0x01 << 6)
-// enables the reporting of the availability of new acceleration data as an interrupt
+// The Data Ready Enable bit enables the reporting of the availability of new acceleration data as an interrupt.
 #define KX122_CNTL1_DRDYE (0x01 << 5)
 // 2g range
 #define KX122_CNTL1_GSEL_2G (0x00 << 3)
@@ -219,7 +226,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX122_CNTL1_TPE (0x01 << 0)
 // initiates software reset, which performs the RAM reboot routine
 #define KX122_CNTL2_SRST (0x01 << 7)
-// command test control
+// The Command Test Control bit is used to verify proper ASIC functionality
 #define KX122_CNTL2_COTC (0x01 << 6)
 // x-
 #define KX122_CNTL2_LEM (0x01 << 5)
@@ -447,15 +454,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX122_LP_CNTL_AVC_64_SAMPLE_AVG (0x06 << 4)
 // 128 Samples Averaged
 #define KX122_LP_CNTL_AVC_128_SAMPLE_AVG (0x07 << 4)
-#define KX122_BUF_CNTL1_SMP_TH0_7 (0xFF << 0)
 // controls activation of the sample buffer
 #define KX122_BUF_CNTL2_BUFE (0x01 << 7)
 // determines the resolution of the acceleration data samples collected by the sample
 #define KX122_BUF_CNTL2_BRES (0x01 << 6)
 // buffer full interrupt enable bit
 #define KX122_BUF_CNTL2_BFIE (0x01 << 5)
-// watermark level bits 8 and 9
-#define KX122_BUF_CNTL2_SMP_TH8_9 (0x0C << 2)
 // The buffer collects 681 sets of 8-bit low resolution values or 339 sets of 16-bit high resolution values and then stops collecting data, collecting new data only when the buffer is not full
 #define KX122_BUF_CNTL2_BUF_M_FIFO (0x00 << 0)
 // The buffer holds the last 681 sets of 8-bit low resolution values or 339 sets of 16-bit high resolution values. Once the buffer is full, the oldest data is discarded to make room for newer data.
@@ -464,11 +468,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX122_BUF_CNTL2_BUF_M_TRIGGER (0x02 << 0)
 // The buffer holds the last 681 sets of 8-bit low resolution values or 339 sets of 16-bit high resolution values. Once the buffer is full, the oldest data is discarded to make room for newer data. Reading from the buffer in this mode will return the most recent data first.
 #define KX122_BUF_CNTL2_BUF_M_FILO (0x03 << 0)
-#define KX122_BUF_STATUS_1_SMP_LEV0_7 (0xFF << 0)
 // reports the status of the buffers trigger function if this mode has been selected
 #define KX122_BUF_STATUS_2_BUF_TRIG (0x01 << 7)
-// level High mask
-#define KX122_BUF_STATUS_2_SMP_LEV8_10 (0x07 << 0)
 // MEMS Test OFF
 #define KX122_SELF_TEST_MEMS_TEST_OFF (0x00 << 0)
 // MEMS Test ON
@@ -480,13 +481,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // WHO_AM_I -value for KX124
 #define KX124_WHO_AM_I_WIA_ID (0x28 << 0)
  /*registers bit masks */
-
+// test value
 #define KX122_COTR_DCSTR_MASK 0xFF
-
+// Who Am I value
 #define KX122_WHO_AM_I_WIA_MASK 0xFF
 // status of tap/double tap, bit is released when interrupt release register INT_REL is read.
 #define KX122_INS2_TDTS_MASK 0x0C
-// selects the acceleration range of the accelerometer outputs
+// The G-Select bits allow to select the acceleration range of the accelerometer outputs
 #define KX122_CNTL1_GSEL_MASK 0x18
 // sets the output data rate for the Tilt Position function
 #define KX122_CNTL3_OTP_MASK 0xC0
@@ -504,30 +505,33 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX122_INC1_PWSEL1_MASK 0xC0
 // AND OR configuration for motion detection
 #define KX122_INC2_AOI_MASK 0x40
-#define KX122_INC2_WUE_MASK 0x3F
-#define KX122_INC3_TM_MASK 0x3F
 // Pulse interrupt 2 width configuration
 #define KX122_INC5_PWSEL2_MASK 0xC0
+#define KX122_TILT_TIMER_TSC_MASK 0xFF
+#define KX122_WUFC_WUFC_MASK 0xFF
+#define KX122_TDTC_TDTC_MASK 0xFF
+#define KX122_TTH_TTH_MASK 0xFF
+#define KX122_TTL_TTL_MASK 0xFF
+#define KX122_FTD_FTDH_MASK 0xF8
+#define KX122_FTD_FTDL_MASK 0x07
+#define KX122_STD_STD_MASK 0xFF
+#define KX122_TLT_TLT_MASK 0xFF
+#define KX122_TWS_TWS_MASK 0xFF
+#define KX122_FFTH_FFTH_MASK 0xFF
+#define KX122_FFC_FFC_MASK 0xFF
 // Output Data Rate at which the Free fall engine performs its function.
 #define KX122_FFCNTL_OFFI_MASK 0x07
+#define KX122_ATH_ATH_MASK 0xFF
+#define KX122_TILT_ANGLE_LL_TA_MASK 0xFF
+#define KX122_TILT_ANGLE_HL_HL_MASK 0xFF
 #define KX122_HYST_SET_HYST_MASK 0x3F
 // Averaging Filter Control
 #define KX122_LP_CNTL_AVC_MASK 0x70
-
-#define KX122_BUF_CNTL1_SMP_TH0_MASK 0xFF
-#define KX122_BUF_CNTL1_SMP_TH0_7_MASK 0xFF
-
-#define KX122_BUF_CNTL2_SMP_TH8_MASK 0x0C
 #define KX122_BUF_CNTL2_SMP_TH8_9_MASK 0x0C
 // selects the operating mode of the sample buffer
 #define KX122_BUF_CNTL2_BUF_M_MASK 0x03
-
-#define KX122_BUF_STATUS_1_SMP_LEV0_MASK 0xFF
-#define KX122_BUF_STATUS_1_SMP_LEV0_7_MASK 0xFF
-
-#define KX122_BUF_STATUS_2_SMP_LEV8_MASK 0x07
 #define KX122_BUF_STATUS_2_SMP_LEV8_10_MASK 0x07
-
+// self test value
 #define KX122_SELF_TEST_MEMS_TEST_MASK 0xFF
 
 #define KX112_WHO_AM_I_WIA_MASK 0xFF

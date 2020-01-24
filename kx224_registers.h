@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2017 Kionix Inc.
+Copyright (c) 2020 Rohm Semiconductor
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -25,23 +25,29 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef __KX224_REGISTERS_H__
 #define __KX224_REGISTERS_H__
 /* registers */
-// x- hp filter output
+// x- hp filter output.
 #define KX224_XHP_L 0x00
+// msb
 #define KX224_XHP_H 0x01
 // y- hp filter output
 #define KX224_YHP_L 0x02
+// msb
 #define KX224_YHP_H 0x03
 // z- hpfilteroutput
 #define KX224_ZHP_L 0x04
+// msb
 #define KX224_ZHP_H 0x05
 // output register x
 #define KX224_XOUT_L 0x06
+// msb
 #define KX224_XOUT_H 0x07
 // output register y
 #define KX224_YOUT_L 0x08
+// msb
 #define KX224_YOUT_H 0x09
 // output register z
 #define KX224_ZOUT_L 0x0A
+// msb
 #define KX224_ZOUT_H 0x0B
 // communication selftest
 #define KX224_COTR 0x0C
@@ -87,6 +93,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX224_TDTC 0x25
 #define KX224_TTH 0x26
 #define KX224_TTL 0x27
+// This register contains counter information for the detection of any tap event.
 #define KX224_FTD 0x28
 #define KX224_STD 0x29
 #define KX224_TLT 0x2A
@@ -271,8 +278,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX224_CNTL3_OWUF_100 (0x07 << 0)
 // low-pass filter roll off control
 #define KX224_ODCNTL_IIR_BYPASS (0x01 << 7)
-// low pass filter enable
-#define KX224_ODCNTL_LPRO (0x01 << 6)
+// filter corner frequency set to ODR/9
+#define KX224_ODCNTL_LPRO_ODR_9 (0x00 << 6)
+// filter corner frequency set to ODR/2
+#define KX224_ODCNTL_LPRO_ODR_2 (0x01 << 6)
 // 12.5Hz
 #define KX224_ODCNTL_OSA_12P5 (0x00 << 0)
 // 25Hz
@@ -439,15 +448,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX224_LP_CNTL_AVC_64_SAMPLE_AVG (0x06 << 4)
 // 128 Samples Averaged
 #define KX224_LP_CNTL_AVC_128_SAMPLE_AVG (0x07 << 4)
-#define KX224_BUF_CNTL1_SMP_TH0_7 (0xFF << 0)
 // controls activation of the sample buffer
 #define KX224_BUF_CNTL2_BUFE (0x01 << 7)
 // determines the resolution of the acceleration data samples collected by the sample
 #define KX224_BUF_CNTL2_BRES (0x01 << 6)
 // buffer full interrupt enable bit
 #define KX224_BUF_CNTL2_BFIE (0x01 << 5)
-// watermark level bits 8 and 9
-#define KX224_BUF_CNTL2_SMP_TH8_9 (0x0C << 2)
 // The buffer collects 681 sets of 8-bit low resolution values or 339 sets of 16-bit high resolution values and then stops collecting data, collecting new data only when the buffer is not full
 #define KX224_BUF_CNTL2_BUF_M_FIFO (0x00 << 0)
 // The buffer holds the last 681 sets of 8-bit low resolution values or 339 sets of 16-bit high resolution values. Once the buffer is full, the oldest data is discarded to make room for newer data.
@@ -456,11 +462,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX224_BUF_CNTL2_BUF_M_TRIGGER (0x02 << 0)
 // The buffer holds the last 681 sets of 8-bit low resolution values or 339 sets of 16-bit high resolution values. Once the buffer is full, the oldest data is discarded to make room for newer data. Reading from the buffer in this mode will return the most recent data first.
 #define KX224_BUF_CNTL2_BUF_M_FILO (0x03 << 0)
-#define KX224_BUF_STATUS_1_SMP_LEV0_7 (0xFF << 0)
 // reports the status of the buffers trigger function if this mode has been selected
 #define KX224_BUF_STATUS_2_BUF_TRIG (0x01 << 7)
-// level High mask
-#define KX224_BUF_STATUS_2_SMP_LEV8_10 (0x07 << 0)
 // MEMS Test OFF
 #define KX224_SELF_TEST_MEMS_TEST_OFF (0x00 << 0)
 // MEMS Test ON
@@ -468,9 +471,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // WHO_AM_I -value for KX222
 #define KX222_WHO_AM_I_WIA_ID (0x2C << 0)
  /*registers bit masks */
-
+// communication selftest value
 #define KX224_COTR_DCSTR_MASK 0xFF
-
+// WHO_AM_I -value
 #define KX224_WHO_AM_I_WIA_MASK 0xFF
 // status of tap/double tap, bit is released when interrupt release register INT_REL is read.
 #define KX224_INS2_TDTS_MASK 0x0C
@@ -482,36 +485,41 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define KX224_CNTL3_OTDT_MASK 0x38
 // sets the output data rate for the general motion detection function and the high-pass filtered outputs
 #define KX224_CNTL3_OWUF_MASK 0x07
+// low pass filter enable
+#define KX224_ODCNTL_LPRO_MASK 0x40
 // acceleration output data rate.
 #define KX224_ODCNTL_OSA_MASK 0x0F
 // Pulse interrupt 1 width configuration
 #define KX224_INC1_PWSEL1_MASK 0xC0
 // AND OR configuration for motion detection
 #define KX224_INC2_AOI_MASK 0x40
-#define KX224_INC2_WUE_MASK 0x3F
-#define KX224_INC3_TM_MASK 0x3F
 // Pulse interrupt 2 width configuration
 #define KX224_INC5_PWSEL2_MASK 0xC0
+#define KX224_TILT_TIMER_TSC_MASK 0xFF
+#define KX224_WUFC_WUFC_MASK 0xFF
+#define KX224_TDTC_TDTC_MASK 0xFF
+#define KX224_TTH_TTH_MASK 0xFF
+#define KX224_TTL_TTL_MASK 0xFF
+#define KX224_FTD_FTDH_MASK 0xF8
+#define KX224_FTD_FTDL_MASK 0x07
+#define KX224_STD_STD_MASK 0xFF
+#define KX224_TLT_TLT_MASK 0xFF
+#define KX224_TWS_TWS_MASK 0xFF
+#define KX224_FFTH_FFTH_MASK 0xFF
+#define KX224_FFC_FFC_MASK 0xFF
 // Output Data Rate at which the Free fall engine performs its function.
 #define KX224_FFCNTL_OFFI_MASK 0x07
+#define KX224_ATH_ATH_MASK 0xFF
+#define KX224_TILT_ANGLE_LL_TA_MASK 0xFF
+#define KX224_TILT_ANGLE_HL_HL_MASK 0xFF
 #define KX224_HYST_SET_HYST_MASK 0x3F
 // Averaging Filter Control
 #define KX224_LP_CNTL_AVC_MASK 0x70
-
-#define KX224_BUF_CNTL1_SMP_TH0_MASK 0xFF
-#define KX224_BUF_CNTL1_SMP_TH0_7_MASK 0xFF
-
-#define KX224_BUF_CNTL2_SMP_TH8_MASK 0x0C
 #define KX224_BUF_CNTL2_SMP_TH8_9_MASK 0x0C
 // selects the operating mode of the sample buffer
 #define KX224_BUF_CNTL2_BUF_M_MASK 0x03
-
-#define KX224_BUF_STATUS_1_SMP_LEV0_MASK 0xFF
-#define KX224_BUF_STATUS_1_SMP_LEV0_7_MASK 0xFF
-
-#define KX224_BUF_STATUS_2_SMP_LEV8_MASK 0x07
 #define KX224_BUF_STATUS_2_SMP_LEV8_10_MASK 0x07
-
+// Self test value
 #define KX224_SELF_TEST_MEMS_TEST_MASK 0xFF
 
 #define KX222_WHO_AM_I_WIA_MASK 0xFF
